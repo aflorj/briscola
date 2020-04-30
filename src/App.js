@@ -1,16 +1,8 @@
 import React from 'react';
-import { Client } from 'boardgame.io/react';
+import { deck } from './cards';
 
-const TicTacToe = {
-  setup: () => ({ cells: Array(9).fill(null) }),
-
-  moves: {
-    clickCell: (G, ctx, id) => {
-      G.cells[id] = ctx.currentPlayer;
-    },
-  },
-};
-
-const App = Client({ game: TicTacToe });
+function App(props) {
+  return deck.map(x => <img src={x.imagePath} alt={x.alt} />);
+}
 
 export default App;
