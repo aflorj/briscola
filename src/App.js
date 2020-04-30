@@ -1,8 +1,9 @@
 import React from 'react';
-import { deck } from './cards';
+import { shuffledDeck } from './cards';
 
 function App(props) {
-  return deck.map(x => <img src={x.imagePath} alt={x.alt} />);
+  return shuffledDeck.map(x =>
+  <img src={x.imagePath} alt={x.alt} />);
 }
 
 export default App;

@@ -340,4 +340,16 @@ const twoOfCoins = {
     twoOfBatons, fourOfBatons, fiveOfBatons, sixOfBatons, sevenOfBatons, knaveOfBatons, knightOfBatons, kingOfBatons, threeOfBatons, aceOfBatons
   ];
 
-export { deck };
+  function shuffleDeck(deck) {
+    for (var i = deck.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = deck[i];
+        deck[i] = deck[j];
+        deck[j] = temp;
+    }
+    return deck;
+}
+
+let shuffledDeck = shuffleDeck(deck);
+
+export { shuffledDeck };
