@@ -7,8 +7,10 @@ const Briscola = {
     deckOnBoard: shuffledDeck,
     playerOneCards: [],
     playerOnePicked: [],
+    playerOneThrows: null,
     playerTwoCards: [],
     playerTwoPicked: [],
+    playerTwoThrows: null,
     headToHead: [],
     briscola: null
   }),
