@@ -1,9 +1,21 @@
 import React from 'react';
+import { Client } from 'boardgame.io/react';
 import { shuffledDeck } from './cards';
 
-function App(props) {
-  return shuffledDeck.map(x =>
-  <img src={x.imagePath} alt={x.alt} />);
+const Briscola = {
+  setup: () => ({
+    deckOnBoard: shuffledDeck,
+    playerOneCards: [],
+    playerOnePicked: [],
+    playerTwoCards: [],
+    playerTwoPicked: [],
+    headToHead: [],
+    briscola: null
+  }),
 }
 
+const App = Client({ game: Briscola });
+
 export default App;
+
+// shuffledDeck.splice(shuffledDeck.length - 3, 3),
