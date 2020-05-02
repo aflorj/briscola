@@ -2,23 +2,35 @@ import React from 'react';
 import { Client } from 'boardgame.io/react';
 import { shuffledDeck } from './cards';
 
+
 const Briscola = {
+  name: 'Briscola',
+
   setup: () => ({
-    deckOnBoard: shuffledDeck,
     playerOneCards: [],
     playerOnePicked: [],
-    playerOneThrows: null,
     playerTwoCards: [],
     playerTwoPicked: [],
-    playerTwoThrows: null,
     headToHead: [],
-    briscola: null
+    briscola: null,
+    deckOnBoard: shuffledDeck,
   }),
-}
+
+  moves: { PlayCard, GiveCards },
+
+};
+
+
+
+
+function GiveCards(G, ctx) {
+  G.playerOneCards = G.deckOnBoard.splice(G.deckOnBoard.length - 3, 3);
+};
+
+function PlayCard(G, ctx, cardId) {
+  G.headToHead = G.playerOneCards.splice(cardId,1);
+};
 
 const App = Client({ game: Briscola });
 
 export default App;
-
-// shuffledDeck.splice(shuffledDeck.length - 3, 3)
-// Use this to deal first round of the cards to each player.headToHead: [],headToHead: [],
