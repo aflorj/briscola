@@ -1,0 +1,19 @@
+div.board {
+    grid-gap: 5px;
+    max-width: 70%;
+    height: 80vh;
+    border: 1px solid red;
+    margin: 20px;
+}
+
+div.player {
+    max-width: 90%;
+    height: 30vh;
+    border: solid 1px green;
+}
+
+div.battlefield {
+    border: solid 1px;
+    max-width: 50%;
+    height: 40vh;
+}
