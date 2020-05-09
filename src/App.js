@@ -1,28 +1,27 @@
 import { Client } from 'boardgame.io/react';
 import { shuffledDeck } from './cards.js';
 import { Local } from 'boardgame.io/multiplayer';
-import { Board } from './Board.js'
-
+import { Board } from './Board.js';
+import { PlayerView } from 'boardgame.io/core';
+import React, { useState } from 'react';
 
 const Briscola = {
   name: 'Briscola',
 
   setup: () => ({
     players: {
-      p1: {
+      '0': {
         cards: [],
-        picked: [],
-        plays: null
+        picked: []
       },
-      p2: {
+      '1': {
         cards: [],
-        picked: [],
-        plays: null
+        picked: []
       }
     },
 
     briscola: null,
-    deckOnBoard: shuffledDeck,
+    deckOnBoard: shuffledDeck
     // The only object on the board at the start of the game is a shuffled deck of cards.
 
   }),
@@ -38,8 +37,8 @@ const Briscola = {
       onBegin: (G, ctx) => {
         // The 'draw' phase only lasts a few seconds (depending on the length of the drawing aninmations).
 
-        G.players.p1.cards = G.deckOnBoard.splice(G.deckOnBoard.length - 3, 3);
-        G.players.p2.cards = G.deckOnBoard.splice(G.deckOnBoard.length - 3, 3);
+        G.players['0'].cards = G.deckOnBoard.splice(G.deckOnBoard.length - 3, 3);
+        G.players['1'].cards = G.deckOnBoard.splice(G.deckOnBoard.length - 3, 3);
         G.briscola = G.deckOnBoard.pop();
 
         /* Each player receives three cards from the top of the deck and the seventh card
@@ -75,19 +74,28 @@ const Briscola = {
     }
 
 
-  }
+  },
+
+  playerView: PlayerView.STRIP_SECRETS
 
 };
 
 function PlayCard(G, ctx, cardId) {
   G.headToHead = G.players.p1.cards.splice(cardId,1);
-
 };
 
-const App = Client({
+
+const BriscolaClient = Client({
   game: Briscola,
-  multiplayer: Local(),
-  board: Board
-})
+  board: Board,
+  multiplayer: Local()
+});
+
+const App = () => (
+  <div>
+    <BriscolaClient playerID="0" />
+    <BriscolaClient playerID="1" />
+  </div>
+); 
 
 export default App;

@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-export default function ThreeCards() {
+export default function ThreeCards(props) {
     return (
         <div>
             
