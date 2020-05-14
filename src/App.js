@@ -2,10 +2,10 @@ import { Client } from 'boardgame.io/react';
 import { shuffledDeck } from './cards.js';
 import { Local } from 'boardgame.io/multiplayer';
 import { Board } from './Board.js';
-import { PlayerView } from 'boardgame.io/core';
-import React, { useState } from 'react';
+import { Game, PlayerView } from 'boardgame.io/core';
+import React from 'react';
 
-const Briscola = {
+const Briscola = Game({
   name: 'Briscola',
 
   setup: () => ({
@@ -76,9 +76,7 @@ const Briscola = {
 
   },
 
-  playerView: PlayerView.STRIP_SECRETS
-
-};
+});
 
 function PlayCard(G, ctx, cardId) {
   G.headToHead = G.players.p1.cards.splice(cardId,1);
@@ -93,8 +91,7 @@ const BriscolaClient = Client({
 
 const App = () => (
   <div>
-    <BriscolaClient playerID="0" />
-    <BriscolaClient playerID="1" />
+    <BriscolaClient playerID="0"/>
   </div>
 ); 
 

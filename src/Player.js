@@ -3,10 +3,10 @@ import ThreeCards from './ThreeCards.js';
 import './style.css';
 
 export default function Player(props) {
-    let G = props.G;
+    let passingDown = props.passingDown;
     return (
         <div className="player">
-        <ThreeCards G={G}/>
+        <ThreeCards passingDown={passingDown}/>
         </div>
     )
 }
