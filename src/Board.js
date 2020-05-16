@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Player from './Player.js';
-import Battlefield from './Battlefield.js';
-import CommunityCards from './CommunityCards.js';
 import './style.css';
 
-export function Board() {
+export function Board(props) {    
+    
+console.log(props);
+
+
     return (
         <div className="board">
-        <Player />
-        <Battlefield />
-        <Player />
-        <CommunityCards />
+        <Player playerID="0"/>
+        <Player playerID="1"/>
         </div>
     );
 }
