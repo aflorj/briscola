@@ -79,6 +79,7 @@ function prepareGame() {
 
 function playCardOne(G, ctx) {
   //playerID => remove card from players cards array
+  // cards can't get
 
   let currentPlayerID = ctx.currentPlayer;
     
