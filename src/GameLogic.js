@@ -5,12 +5,6 @@ export const Briscola = {
 
   setup: prepareGame,
 
-  moves: { },
-
-  turn: {
-    moveLimit: 1
-  },
-
   phases: {
 
     draw: {
@@ -31,11 +25,17 @@ export const Briscola = {
 
     play: {
       moves: { playCard },
+      next: 'compare',
+      endIf: G => G.player_0.played !== null && G.player_1.played !== null
 
     },
 
     compare: {
-      moves: { }
+      moves: { },
+      onBegin: (G) => {
+        // Compare and move both cards to the winner's 'Picked' array.
+      },
+      next: 'play',
 
     }
   },
@@ -56,7 +56,8 @@ function prepareGame() {
       }, 
 
     briscola: null,
-    deckOnBoard: shuffledDeck
+    deckOnBoard: shuffledDeck,
+    winnerOfPreviousRound: null
 
   };
 };
