@@ -32,9 +32,7 @@ export const Briscola = {
 
     compare: {
       moves: { },
-      onBegin: (G) => {
-        // Compare and move both cards to the winner's 'Picked' array.
-      },
+      onBegin: evaluate,
       next: 'play',
 
     }
@@ -57,7 +55,6 @@ function prepareGame() {
 
     briscola: null,
     deckOnBoard: shuffledDeck,
-    winnerOfPreviousRound: null
 
   };
 };
@@ -67,8 +64,32 @@ function playCard(G, ctx, cardID) {
   let playerID = 'player_' + ctx.currentPlayer;
   let currentPlayer = G[playerID];
   let cardToPlay = currentPlayer.cards[cardID];
-  currentPlayer.played = currentPlayer.cards.splice(cardToPlay, 1);
-}
+  currentPlayer.played = currentPlayer.cards.splice(cardToPlay, 1)[0];
+  ctx.events.endTurn();
+  // Dodal tisto nulo na koncu, ker splice naredi array, mi pa rabmo v played samo object
+  // Dodal endTurn event v ta move
+};
+
+function evaluate(G, ctx) {
+  let briscola = G.briscola;
+  let p0 = G.player_0.played;
+  let p1 = G.player_1.played;
+
+  if (p0.suit === p1.suit) {
+    if (p0.strength > p1.strength) {
+      // dej karte p0
+    } else {
+      // dej karte p1
+    }
+  } else if (briscola.suit === p0.suit && briscola.suit !== p1.suit) {
+    // dej karte p0
+  } else if (briscola.suit !== p0.suit && briscola.suit === p1.suit) {
+    //dej karte p1
+  } else {
+    //pobere tist, ka je igrau prvi (oz. winnerOfLastRound)
+  }
+
+};
 
 
 
