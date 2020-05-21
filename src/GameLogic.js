@@ -90,7 +90,3 @@ function evaluate(G, ctx) {
   }
 
 };
-
-
-
-
