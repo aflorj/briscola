@@ -86,7 +86,7 @@ function evaluate(G, ctx) {
   } else if (briscola.suit !== p0.suit && briscola.suit === p1.suit) {
     //dej karte p1
   } else {
-    //pobere tist, ka je igrau prvi (oz. winnerOfLastRound)
+    //pobere tist, ka je igrau prvi (lahko tud winnerOfLastRound)
   }
 
 };
