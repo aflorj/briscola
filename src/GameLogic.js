@@ -5,56 +5,43 @@ export const Briscola = {
   name: 'Briscola',
 
   setup: prepareGame,
-  moves: { },
 
   phases: {
-    draw: {
-      moves: {
-        /* There is no player moves in this short stage. Players are watching the cards
-        being dealt to them and the briscola card to be set on the board. */
-      },
-      onBegin: (G, ctx) => {
-        // The 'draw' phase only lasts a few seconds (depending on the length of the drawing aninmations).
-  
 
-        // Uporabi Object.keys => array [0,1]
-        
-        G.players['0'].cards = G.deckOnBoard.splice(G.deckOnBoard.length - 3, 3);
-        G.players['1'].cards = G.deckOnBoard.splice(G.deckOnBoard.length - 3, 3);
+    draw: {
+      moves: { },
+      onBegin: (G, ctx) => {
+
+        G.player_0.cards = G.deckOnBoard.splice(G.deckOnBoard.length - 3, 3);
+        G.player_1.cards = G.deckOnBoard.splice(G.deckOnBoard.length - 3, 3);
         G.briscola = G.deckOnBoard.pop();
 
-        /* Each player receives three cards from the top of the deck and the seventh card
-        from the shuffled deck becomes the briscola card of the game. */
       },
 
       next: 'play',
       start: true,
       endIf: G => G.briscola !== null
 
-      /* As soon as the briscola card hits the board this phase ends and we move to the
-      playing phase ('play'). */
     },
 
     play: {
+<<<<<<< HEAD
       moves: { 
         playCardOne
       
       },
+=======
+      moves: { playCard },
+      next: 'compare',
+      endIf: G => G.player_0.played !== null && G.player_1.played !== null
+>>>>>>> 4975340be36963ea093b2ac7c98c2208f35e0248
 
-      /* Players can now use the move 'PlayCard' - the only move that will be available to
-      them in the game of Briscola. Each player plays one card. */
     },
 
     compare: {
-      /* In this phase we will compare the played cards and declare the winner of the turn.
-      The winner will take both played card and store them in his 'picked' array.
-      The card from the top of the shuffled deck will then be added to his hand ('cards'),
-      followed by the loser of the round receiving the next card from the top off the shuffled deck.
-      Another short phase (a few seconds, depending on animations) with no player moves.
-
-      From this point on the game is switching between 'play' and 'compare'. */
-
-      moves: {}
+      moves: { },
+      onBegin: evaluate,
+      next: 'play',
 
     }
   },
@@ -65,26 +52,29 @@ export const Briscola = {
 
 function prepareGame() {
   return {
-    players: {
-      '0': {
+       player_0: {
         cards: [],
         picked: [],
         played: null
       },
-      '1': {
+        
+      player_1: {
         cards: [],
         picked: [],
         played: null
-      }
-    },
+      }, 
 
     briscola: null,
     deckOnBoard: shuffledDeck,
+<<<<<<< HEAD
     // The only object on the board at the start of the game is a shuffled deck of cards.
+=======
+>>>>>>> 4975340be36963ea093b2ac7c98c2208f35e0248
 
   };
 };
 
+<<<<<<< HEAD
 function playCardOne(G, ctx, cardId) {
   console.log()
 }
@@ -102,3 +92,36 @@ function playCardOne(G, ctx, cardId) {
 //   "activePlayers": null,
 //   "numMoves": 0
 // }
+=======
+
+function playCard(G, ctx, cardID) {
+  let playerID = 'player_' + ctx.currentPlayer;
+  let currentPlayer = G[playerID];
+  let cardToPlay = currentPlayer.cards[cardID];
+  currentPlayer.played = currentPlayer.cards.splice(cardToPlay, 1)[0];
+  ctx.events.endTurn();
+  // Dodal tisto nulo na koncu, ker splice naredi array, mi pa rabmo v played samo object
+  // Dodal endTurn event v ta move
+};
+
+function evaluate(G, ctx) {
+  let briscola = G.briscola;
+  let p0 = G.player_0.played;
+  let p1 = G.player_1.played;
+
+  if (p0.suit === p1.suit) {
+    if (p0.strength > p1.strength) {
+      // dej karte p0
+    } else {
+      // dej karte p1
+    }
+  } else if (briscola.suit === p0.suit && briscola.suit !== p1.suit) {
+    // dej karte p0
+  } else if (briscola.suit !== p0.suit && briscola.suit === p1.suit) {
+    //dej karte p1
+  } else {
+    //pobere tist, ka je igrau prvi (lahko tud winnerOfLastRound)
+  }
+
+};
+>>>>>>> 4975340be36963ea093b2ac7c98c2208f35e0248
