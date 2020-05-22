@@ -25,16 +25,9 @@ export const Briscola = {
     },
 
     play: {
-<<<<<<< HEAD
-      moves: { 
-        playCardOne
-      
-      },
-=======
       moves: { playCard },
       next: 'compare',
       endIf: G => G.player_0.played !== null && G.player_1.played !== null
->>>>>>> 4975340be36963ea093b2ac7c98c2208f35e0248
 
     },
 
@@ -66,33 +59,10 @@ function prepareGame() {
 
     briscola: null,
     deckOnBoard: shuffledDeck,
-<<<<<<< HEAD
-    // The only object on the board at the start of the game is a shuffled deck of cards.
-=======
->>>>>>> 4975340be36963ea093b2ac7c98c2208f35e0248
 
   };
 };
 
-<<<<<<< HEAD
-function playCardOne(G, ctx, cardId) {
-  console.log()
-}
-
-// {
-//   "numPlayers": 2,
-//   "turn": 1,
-//   "currentPlayer": "0",
-//   "playOrder": [
-//     "0",
-//     "1"
-//   ],
-//   "playOrderPos": 0,
-//   "phase": "play",
-//   "activePlayers": null,
-//   "numMoves": 0
-// }
-=======
 
 function playCard(G, ctx, cardID) {
   let playerID = 'player_' + ctx.currentPlayer;
@@ -124,4 +94,3 @@ function evaluate(G, ctx) {
   }
 
 };
->>>>>>> 4975340be36963ea093b2ac7c98c2208f35e0248
