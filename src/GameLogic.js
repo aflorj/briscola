@@ -1,4 +1,5 @@
 import { shuffledDeck } from './cards.js';
+import { TurnOrder } from 'boardgame.io/core';
 
 export const Briscola = {
   name: 'Briscola',
@@ -35,7 +36,10 @@ export const Briscola = {
     },
 
     play: {
-      moves: { playCardOne },
+      moves: { 
+        playCardOne
+      
+      },
 
       /* Players can now use the move 'PlayCard' - the only move that will be available to
       them in the game of Briscola. Each player plays one card. */
@@ -54,6 +58,9 @@ export const Briscola = {
 
     }
   },
+  turn: {
+    
+  }
 };
 
 function prepareGame() {
@@ -72,20 +79,26 @@ function prepareGame() {
     },
 
     briscola: null,
-    deckOnBoard: shuffledDeck
+    deckOnBoard: shuffledDeck,
     // The only object on the board at the start of the game is a shuffled deck of cards.
+
   };
 };
 
-function playCardOne(G, ctx) {
-  //playerID => remove card from players cards array
-
-  let currentPlayerID = ctx.currentPlayer;
-    
-  return console.log(`PlayerID ${currentPlayerID}`);
-  
+function playCardOne(G, ctx, cardId) {
+  console.log()
 }
 
-
-
-
+// {
+//   "numPlayers": 2,
+//   "turn": 1,
+//   "currentPlayer": "0",
+//   "playOrder": [
+//     "0",
+//     "1"
+//   ],
+//   "playOrderPos": 0,
+//   "phase": "play",
+//   "activePlayers": null,
+//   "numMoves": 0
+// }
