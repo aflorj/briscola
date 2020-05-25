@@ -35,7 +35,7 @@ export const Briscola = {
       moves: { },
       onBegin: evaluate,
       next: 'play',
-
+      onEnd: cleanup
     }
   },
   turn: {
@@ -67,30 +67,58 @@ function prepareGame() {
 function playCard(G, ctx, cardID) {
   let playerID = 'player_' + ctx.currentPlayer;
   let currentPlayer = G[playerID];
-  let cardToPlay = currentPlayer.cards[cardID];
-  currentPlayer.played = currentPlayer.cards.splice(cardToPlay, 1)[0];
+  currentPlayer.played = currentPlayer.cards.splice(cardID, 1)[0];
   ctx.events.endTurn();
-  // Dodal tisto nulo na koncu, ker splice naredi array, mi pa rabmo v played samo object
-  // Dodal endTurn event v ta move
 };
 
 function evaluate(G, ctx) {
   let briscola = G.briscola;
   let p0 = G.player_0.played;
   let p1 = G.player_1.played;
+  let p0picked = G.player_0.picked;
+  let p1picked = G.player_1.picked;
 
+  // TODO
+  // endPhase ne dela, treba je nrdit se turn order.
+  
   if (p0.suit === p1.suit) {
     if (p0.strength > p1.strength) {
-      // dej karte p0
-    } else {
-      // dej karte p1
+      console.log('suit enak, po moci pobere p0');
+      p0picked.push(p0);
+      p0picked.push(p1);
+      ctx.events.endPhase();
+
+        } else {
+      console.log('suit enak, po moci pobere p1');
+      p1picked.push(p0);
+      p1picked.push(p1);
+      ctx.events.endPhase();
     }
   } else if (briscola.suit === p0.suit && briscola.suit !== p1.suit) {
-    // dej karte p0
+    console.log('p0 ima briscolo in pobere');
+    p0picked.push(p0);
+    p0picked.push(p1);
+    ctx.events.endPhase();
+
   } else if (briscola.suit !== p0.suit && briscola.suit === p1.suit) {
-    //dej karte p1
+    console.log('p1 ima briscolo in pobere');
+    p1picked.push(p0);
+    p1picked.push(p1);
+    ctx.events.endPhase();
+
   } else {
-    //pobere tist, ka je igrau prvi (lahko tud winnerOfLastRound)
+    console.log('Pobere WOLR')
+    let winnerOfLastRound = 'player_' + ctx.playOrder[0];
+    G[winnerOfLastRound].picked.push(p0);
+    G[winnerOfLastRound].picked.push(p1);
+    ctx.events.endPhase();
   }
 
 };
+
+function cleanup(G){
+  G.player_0.played = null;
+  G.player_1.played = null;
+}
+
+/* ctx.events.endTurn({ next: playerID }); */
