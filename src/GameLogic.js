@@ -1,5 +1,4 @@
 import { shuffledDeck } from "./cards.js";
-import { TurnOrder } from "boardgame.io/core";
 
 export const Briscola = {
   name: "Briscola",
@@ -8,8 +7,9 @@ export const Briscola = {
 
   phases: {
     draw: {
+      
       moves: {},
-      onBegin: (G, ctx) => {
+      onBegin: (G) => {
         G.player_0.cards = G.deckOnBoard.splice(G.deckOnBoard.length - 3, 3);
         G.player_1.cards = G.deckOnBoard.splice(G.deckOnBoard.length - 3, 3);
         G.briscola = G.deckOnBoard.pop();
@@ -21,6 +21,12 @@ export const Briscola = {
     },
 
     play: {
+      turn: {
+        order: {
+          first: (G) => G.winner,
+          next: (G) => G.loser,
+        }
+      },
       moves: { playCard },
       next: "compare",
       endIf: (G) => G.player_0.played !== null && G.player_1.played !== null,
@@ -29,11 +35,32 @@ export const Briscola = {
     compare: {
       moves: {},
       onBegin: evaluate,
+      endIf: G => G.evaluated === true,
       onEnd: cleanup,
       next: "play",
     },
   },
-  turn: {},
+
+
+  endIf: (G, ctx) => {
+    if (ctx.turn === 41) {
+      let p0bounty = G.player_0.picked;
+      let p1bounty = G.player_1.picked;
+      let p0points = 0;
+      let p1points = 0;
+      p0bounty.forEach((card) => {
+        p0points += card.points;
+      });
+      p1bounty.forEach((card) => {
+        p1points += card.points;
+      });
+      console.log('GAME OVER!')
+      console.log('Player_0 points at the end of the game: ' + p0points);
+      console.log('Player_1 points at the end of the game: ' + p1points);
+      // karkoli ta funkcija returna je dosegljivo tud v 'ctx.gameover' - uporabno pri rendranju (poglej doc)
+    }
+  }
+
 };
 
 function prepareGame() {
@@ -52,6 +79,9 @@ function prepareGame() {
 
     briscola: null,
     deckOnBoard: shuffledDeck,
+    evaluated: false,
+    winner: 0,
+    loser: 1
   };
 }
 
@@ -62,7 +92,7 @@ function playCard(G, ctx, cardID) {
   ctx.events.endTurn();
 }
 
-function evaluate(G, ctx) {
+function evaluate(G) {
   let briscola = G.briscola;
   let p0 = G.player_0.played;
   let p1 = G.player_1.played;
@@ -71,39 +101,59 @@ function evaluate(G, ctx) {
 
   if (p0.suit === p1.suit) {
     if (p0.strength > p1.strength) {
-      console.log("suit enak, po moci pobere p0");
+      console.log("Both played cards have the same suit. P0 takes the round due to the higher strength of his card.");
       p0picked.push(p0);
       p0picked.push(p1);
-      ctx.events.endPhase();
+       G.winner = 0;
+       G.loser = 1;
+      G.evaluated = true;
     } else {
-      console.log("suit enak, po moci pobere p1");
+      console.log("Both played cards have the same suit. P1 takes the round due to the higher strength of his card.");
       p1picked.push(p0);
       p1picked.push(p1);
-      ctx.events.endPhase();
+       G.winner = 1;
+       G.loser = 0;
+      G.evaluated = true;
     }
   } else if (briscola.suit === p0.suit && briscola.suit !== p1.suit) {
-    console.log("p0 ima briscolo in pobere");
+    console.log("P0 won the round by playing a bricola card.");
     p0picked.push(p0);
     p0picked.push(p1);
-    ctx.events.endPhase();
+     G.winner = 0;
+     G.loser = 1;
+    G.evaluated = true;
   } else if (briscola.suit !== p0.suit && briscola.suit === p1.suit) {
-    console.log("p1 ima briscolo in pobere");
+    console.log("P1 won the round by playing a bricola card.");
     p1picked.push(p0);
     p1picked.push(p1);
-    ctx.events.endPhase();
+     G.winner = 1;
+     G.loser = 0;
+    G.evaluated = true;
   } else {
-    console.log("Pobere WOLR");
-    let winnerOfLastRound = "player_" + ctx.playOrder[0];
+    console.log("Neither of the played cards are a briscola card and the cards are not of the same suit. Winner of the last round wins the round.");
+    let winnerOfLastRound = "player_" + G.winner;
     G[winnerOfLastRound].picked.push(p0);
     G[winnerOfLastRound].picked.push(p1);
-    ctx.events.endPhase();
+    G.evaluated = true;
   }
 }
 
 function cleanup(G) {
   G.player_0.played = null;
   G.player_1.played = null;
-  console.log("I should be cleaning up right now...");
+  G.evaluated = false;
+  console.log("Cards were moved to from 'played' array to the winner's 'picked' array and a cleanup was performed.");
+  let prvoKarto = 'player_' + G.winner;
+  let drugoKarto = 'player_' + G.loser;
+  if (G.deckOnBoard.length > 1) {
+  G[prvoKarto].cards.push(G.deckOnBoard.splice(G.deckOnBoard.length - 1, 1)[0]);
+  G[drugoKarto].cards.push(G.deckOnBoard.splice(G.deckOnBoard.length - 1, 1)[0]);
+  console.log('Both players received a new card from the deck. Entering a new round.');
+    } else if (G.deckOnBoard.length === 1) {
+      G[prvoKarto].cards.push(G.deckOnBoard.splice(G.deckOnBoard.length - 1, 1)[0]);
+      G[drugoKarto].cards.push(G.briscola);
+      console.log('The last card from the deck has been delt so briscola card goes to the loser of the last round. Entering a new round.');
+    } else {
+      console.log('The deck is empty - No more cards to deal. Entering a new round.');
+    }
 }
-
-/* ctx.events.endTurn({ next: playerID }); */

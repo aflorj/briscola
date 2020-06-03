@@ -1,4 +1,3 @@
-// Every card as a separate object
 // https://en.wikipedia.org/wiki/Briscola
 // Italian 40-card deck: 10x of: denari (coins), spade (swords), coppe (cups), bastoni (batons)
 // Face cards: fante (knave), cavallo (knight), re (king)
@@ -226,7 +225,7 @@ const twoOfCoins = {
   };
   
   const kingOfCups = {
-    suit: 'swords',
+    suit: 'cups',
     strength: 8,
     points: 4,
     imagePath: '/images/kingOfCups.jpg',
@@ -300,7 +299,7 @@ const twoOfCoins = {
   };
   
   const knightOfBatons = {
-    suit: 'swords',
+    suit: 'batons',
     strength: 7,
     points: 3,
     imagePath: '/images/knightOfBatons.jpg',
@@ -308,7 +307,7 @@ const twoOfCoins = {
   };
   
   const kingOfBatons = {
-    suit: 'swords',
+    suit: 'batons',
     strength: 8,
     points: 4,
     imagePath: '/images/kingOfBatons.jpg',
@@ -316,7 +315,7 @@ const twoOfCoins = {
   };
   
   const threeOfBatons = {
-    suit: 'swords',
+    suit: 'batons',
     strength: 9,
     points: 10,
     imagePath: '/images/threeOfBatons.jpg',
