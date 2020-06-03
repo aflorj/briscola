@@ -7,7 +7,6 @@ export const Briscola = {
 
   phases: {
     draw: {
-      
       moves: {},
       onBegin: (G) => {
         G.player_0.cards = G.deckOnBoard.splice(G.deckOnBoard.length - 3, 3);
@@ -25,7 +24,7 @@ export const Briscola = {
         order: {
           first: (G) => G.winner,
           next: (G) => G.loser,
-        }
+        },
       },
       moves: { playCard },
       next: "compare",
@@ -35,12 +34,11 @@ export const Briscola = {
     compare: {
       moves: {},
       onBegin: evaluate,
-      endIf: G => G.evaluated === true,
+      endIf: (G) => G.evaluated === true,
       onEnd: cleanup,
       next: "play",
     },
   },
-
 
   endIf: (G, ctx) => {
     if (ctx.turn === 41) {
@@ -54,13 +52,12 @@ export const Briscola = {
       p1bounty.forEach((card) => {
         p1points += card.points;
       });
-      console.log('GAME OVER!')
-      console.log('Player_0 points at the end of the game: ' + p0points);
-      console.log('Player_1 points at the end of the game: ' + p1points);
+      console.log("The game has concluded with the following result:");
+      console.log("Player_0 finished the game with " + p0points + " points.");
+      console.log("Player_1 finished the game with " + p1points + " points.");
       // karkoli ta funkcija returna je dosegljivo tud v 'ctx.gameover' - uporabno pri rendranju (poglej doc)
     }
-  }
-
+  },
 };
 
 function prepareGame() {
@@ -81,7 +78,7 @@ function prepareGame() {
     deckOnBoard: shuffledDeck,
     evaluated: false,
     winner: 0,
-    loser: 1
+    loser: 1,
   };
 }
 
@@ -101,36 +98,42 @@ function evaluate(G) {
 
   if (p0.suit === p1.suit) {
     if (p0.strength > p1.strength) {
-      console.log("Both played cards have the same suit. P0 takes the round due to the higher strength of his card.");
+      console.log(
+        "Both played cards have the same suit. P0 takes the round due to the higher strength of his card."
+      );
       p0picked.push(p0);
       p0picked.push(p1);
-       G.winner = 0;
-       G.loser = 1;
+      G.winner = 0;
+      G.loser = 1;
       G.evaluated = true;
     } else {
-      console.log("Both played cards have the same suit. P1 takes the round due to the higher strength of his card.");
+      console.log(
+        "Both played cards have the same suit. P1 takes the round due to the higher strength of his card."
+      );
       p1picked.push(p0);
       p1picked.push(p1);
-       G.winner = 1;
-       G.loser = 0;
+      G.winner = 1;
+      G.loser = 0;
       G.evaluated = true;
     }
   } else if (briscola.suit === p0.suit && briscola.suit !== p1.suit) {
     console.log("P0 won the round by playing a bricola card.");
     p0picked.push(p0);
     p0picked.push(p1);
-     G.winner = 0;
-     G.loser = 1;
+    G.winner = 0;
+    G.loser = 1;
     G.evaluated = true;
   } else if (briscola.suit !== p0.suit && briscola.suit === p1.suit) {
     console.log("P1 won the round by playing a bricola card.");
     p1picked.push(p0);
     p1picked.push(p1);
-     G.winner = 1;
-     G.loser = 0;
+    G.winner = 1;
+    G.loser = 0;
     G.evaluated = true;
   } else {
-    console.log("Neither of the played cards are a briscola card and the cards are not of the same suit. Winner of the last round wins the round.");
+    console.log(
+      "Neither of the played cards are a briscola card and the cards are not of the same suit. Winner of the last round wins the round."
+    );
     let winnerOfLastRound = "player_" + G.winner;
     G[winnerOfLastRound].picked.push(p0);
     G[winnerOfLastRound].picked.push(p1);
@@ -142,18 +145,32 @@ function cleanup(G) {
   G.player_0.played = null;
   G.player_1.played = null;
   G.evaluated = false;
-  console.log("Cards were moved to from 'played' array to the winner's 'picked' array and a cleanup was performed.");
-  let prvoKarto = 'player_' + G.winner;
-  let drugoKarto = 'player_' + G.loser;
+  console.log(
+    "Cards were moved from 'played' to the winner's 'picked' array and a cleanup was performed."
+  );
+  let prvoKarto = "player_" + G.winner;
+  let drugoKarto = "player_" + G.loser;
   if (G.deckOnBoard.length > 1) {
-  G[prvoKarto].cards.push(G.deckOnBoard.splice(G.deckOnBoard.length - 1, 1)[0]);
-  G[drugoKarto].cards.push(G.deckOnBoard.splice(G.deckOnBoard.length - 1, 1)[0]);
-  console.log('Both players received a new card from the deck. Entering a new round.');
-    } else if (G.deckOnBoard.length === 1) {
-      G[prvoKarto].cards.push(G.deckOnBoard.splice(G.deckOnBoard.length - 1, 1)[0]);
-      G[drugoKarto].cards.push(G.briscola);
-      console.log('The last card from the deck has been delt so briscola card goes to the loser of the last round. Entering a new round.');
-    } else {
-      console.log('The deck is empty - No more cards to deal. Entering a new round.');
-    }
+    G[prvoKarto].cards.push(
+      G.deckOnBoard.splice(G.deckOnBoard.length - 1, 1)[0]
+    );
+    G[drugoKarto].cards.push(
+      G.deckOnBoard.splice(G.deckOnBoard.length - 1, 1)[0]
+    );
+    console.log(
+      "Both players received a new card from the deck. Entering a new round."
+    );
+  } else if (G.deckOnBoard.length === 1) {
+    G[prvoKarto].cards.push(
+      G.deckOnBoard.splice(G.deckOnBoard.length - 1, 1)[0]
+    );
+    G[drugoKarto].cards.push(G.briscola);
+    console.log(
+      "The last card from the deck has been delt so briscola card goes to the loser of the last round. Entering a new round."
+    );
+  } else {
+    console.log(
+      "The deck is empty - No more cards to deal. Entering a new round."
+    );
+  }
 }
