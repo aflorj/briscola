@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useState} from 'react';
 import Player from './Player.js';
 import './style.css';
 
 export function Board(props) {
+    const [gameData, setGameData] = useState(props)
     return (
         <div className="board">
-        <Player playerID='0' props={props}/>
-        <Player playerID='1' props={props}/>
+        <Player handID='0' gameData={gameData}/>
+        <Player handID='1' gameData={gameData}/>
         </div>
     );
 }
