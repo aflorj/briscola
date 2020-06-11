@@ -41,11 +41,12 @@ export const Briscola = {
   },
 
   endIf: (G, ctx) => {
+    let p0bounty = G.player_0.picked;
+    let p1bounty = G.player_1.picked;
+    let p0points = 0;
+    let p1points = 0;
     if (ctx.turn === 41) {
-      let p0bounty = G.player_0.picked;
-      let p1bounty = G.player_1.picked;
-      let p0points = 0;
-      let p1points = 0;
+      
       p0bounty.forEach((card) => {
         p0points += card.points;
       });
@@ -55,8 +56,8 @@ export const Briscola = {
       console.log("The game has concluded with the following result:");
       console.log("Player_0 finished the game with " + p0points + " points.");
       console.log("Player_1 finished the game with " + p1points + " points.");
-      // karkoli ta funkcija returna je dosegljivo tud v 'ctx.gameover' - uporabno pri rendranju (poglej doc)
     }
+    // tu das return in kar hoces, da je na koncu igre dosegljivo v ctx.gameover
   },
 };
 

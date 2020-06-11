@@ -6,16 +6,15 @@ import React from 'react';
 
 const BriscolaClient = Client({
   game: Briscola,
+  debug: false,
   board: Board,
   multiplayer: Local()
 });
 
 const App = () => (
   <div>
-    <span>Player 0 view:</span>
-    <BriscolaClient playerID="0"/>
-    <span>Player 1 view:</span>
-    <BriscolaClient playerID="1"/>
+    <BriscolaClient playerID='0'/>
+    <BriscolaClient playerID='1'/>
   </div>
 ); 
 

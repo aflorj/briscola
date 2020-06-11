@@ -7,9 +7,16 @@ div.board {
 }
 
 div.player {
+    margin: 10px;
     max-width: 90%;
     height: 30vh;
-    border: solid 1px green;
+    border: solid 1px orange;
+}
+div.oponent {
+    margin: 10px;
+    max-width: 90%;
+    height: 30vh;
+    border: solid 1px black;
 }
 
 div.battlefield {
