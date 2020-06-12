@@ -2,6 +2,7 @@ import React from 'react';
 import Player from './Player.js';
 import Oponent from './Oponent.js';
 import Winscreen from './Winscreen.js';
+import Middle from './Middle.js';
 import './style.css';
 
 export function Board(props) {
@@ -11,6 +12,7 @@ export function Board(props) {
         <div>Player{props.playerID} view</div>
         <span>Oponent on the top:</span>
         <Oponent handID={props.playerID} gameData={props} />
+        <Middle gameData={props} />
         <span>Player on the bottom:</span>
         <Player handID={props.playerID} gameData={props} />
         </div>

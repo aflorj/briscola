@@ -1,13 +1,24 @@
 import React from 'react';
 import './style.css';
 
-
 export default function Oponent(props) {
-    let cardsToRender = props.gameData.G['player_' + props.handID].cards;
-    return (
+    let ourplayer = props.handID;
+    let p0cards = props.gameData.G.player_0.cards;
+    let p1cards = props.gameData.G.player_1.cards;
+    let backsideUrl = '/images/placeholder.jpg';
+    if (ourplayer === '0'){
+        return (
         <div className="oponent">
-        {cardsToRender.map((x, index) =>
-        <img src={x.imagePath} alt={x.alt} key={x.alt} onClick={() => {props.gameData.moves.playCard(index)}}/>)}
+        {p1cards.map((x, index) =>
+        <img src={backsideUrl} alt={'backside'} key={index} />)}
         </div>
-    )
+        )
+    } else if (ourplayer === '1'){
+        return (
+        <div className="oponent">
+        {p0cards.map((x, index) =>
+        <img src={backsideUrl} alt={'backside'} key={index} />)}
+        </div>
+        )
+    }
 }
