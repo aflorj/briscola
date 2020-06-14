@@ -1,12 +1,13 @@
 import React from 'react';
+import PlayedCard from './PlayedCard.js';
+import CommunityCards from './CommunityCards.js';
 
 export default function Middle(props) {
-    let p0played = props.gameData.G.player_0.played;
-    let p1played = props.gameData.G.player_1.played;
-    
     return (
         <div className="middle">
-
+        <PlayedCard handID='0' gameData={props}/>
+        <PlayedCard handID='1' gameData={props}/>
+        <CommunityCards gameData={props} />
         </div>
         )
     }

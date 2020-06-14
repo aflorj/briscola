@@ -13,8 +13,8 @@ const BriscolaClient = Client({
 
 const App = () => (
   <div>
-    <BriscolaClient playerID='0'/>
-    <BriscolaClient playerID='1'/>
+  <BriscolaClient playerID='0'/>
+  <BriscolaClient playerID='1'/>
   </div>
 ); 
 

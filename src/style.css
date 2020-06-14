@@ -1,9 +1,10 @@
 div.board {
     grid-gap: 5px;
     max-width: 70%;
-    height: 80vh;
+    height: 90vh;
     border: 1px solid red;
     margin: 20px;
+    padding: 100px;
 }
 
 div.player {
@@ -12,6 +13,7 @@ div.player {
     height: 30vh;
     border: solid 1px orange;
 }
+
 div.oponent {
     margin: 10px;
     max-width: 90%;
@@ -19,8 +21,24 @@ div.oponent {
     border: solid 1px black;
 }
 
-div.battlefield {
-    border: solid 1px;
-    max-width: 50%;
-    height: 40vh;
+div.middle {
+    position: relative;
+    margin: 10px;
+    max-width: 90%;
+    height: 30vh;
+    border: solid 1px blue;
+}
+
+div.briscola {
+    margin: 10px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    border: solid 2px cyan;
+    min-height: 200px;
+}
+
+div.briscola > img {
+    min-height: 130px;
+    min-width: 100px;
 }
