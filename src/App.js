@@ -1,5 +1,5 @@
 import { Client } from 'boardgame.io/react';
-import { Local } from 'boardgame.io/multiplayer';
+import { SocketIO } from 'boardgame.io/multiplayer';
 import { Board } from './Board.js';
 import { Briscola } from './GameLogic.js';
 import React from 'react';
@@ -8,7 +8,7 @@ const BriscolaClient = Client({
   game: Briscola,
   debug: false,
   board: Board,
-  multiplayer: Local()
+  multiplayer: SocketIO({ server: 'localhost:8000' }),
 });
 
 const App = () => (
