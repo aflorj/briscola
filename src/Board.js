@@ -5,7 +5,7 @@ import Winscreen from './Winscreen.js';
 import Middle from './Middle.js';
 import './styles/style.css';
 
-export function Board(props) {
+function Board(props) {
     if (props.ctx.turn < 41) {
     return (
         <>
@@ -20,3 +20,5 @@ export function Board(props) {
         return <Winscreen playerID={props.playerID} gameData={props} />
     }
 }
+
+export default Board;
