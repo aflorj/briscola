@@ -1,0 +1,39 @@
+html,
+body {
+  height: 100%;
+  font-family: Varela Round;
+  margin: 0;
+}
+.full_height {
+  height: 100%;
+  background: #fff9c4;
+  text-align: center;
+}
+.title {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 70px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  width: 100%;
+}
+.udaipur-logo {
+  display: inline-flex;
+  height: 100%;
+  width: 70px;
+  margin-bottom: -10px;
+  background-image: url("../../assets/udaipur_logo.png");
+  background-size: cover;
+  /*
+  background-repeat: no-repeat;
+  background-position: 50% 50%; */
+}
+.title-text {
+  height: 100%;
+  display: inline-flex;
+  margin: auto;
+  font-size: 5vh;
+  padding: 12px;
+  color: #414141;
+}

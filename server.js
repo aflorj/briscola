@@ -1,8 +1,7 @@
 import { Server } from 'boardgame.io/server';
 import path from 'path';
 import serve from 'koa-static';
-import { Briscola } from './GameLogic.js';
-
+import { Briscola } from './src/GameLogic.js';
 const server = Server({ games: [Briscola] });
 const PORT = process.env.PORT || 8000;
 

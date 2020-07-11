@@ -3,7 +3,7 @@ import Player from './Player.js';
 import Oponent from './Oponent.js';
 import Winscreen from './Winscreen.js';
 import Middle from './Middle.js';
-import './style.css';
+import './styles/style.css';
 
 export function Board(props) {
     if (props.ctx.turn < 41) {
