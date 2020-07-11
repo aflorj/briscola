@@ -4,7 +4,7 @@ import Lobby from './lobby.js';
 import { Client } from 'boardgame.io/react';
 import { APP_PRODUCTION, GAME_SERVER_URL } from "./config.js";
 import { Briscola } from './GameLogic.js';
-import { Board } from './Board.js';
+import Board from './Board.js';
 import { SocketIO } from 'boardgame.io/multiplayer';
 import HomePage from "./homePage.js";
 import HelpPage from "./helpPage.js";
