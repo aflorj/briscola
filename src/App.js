@@ -20,8 +20,7 @@ const importedGames = [{ game: Briscola, board: Board }];
 const App = () => (
   <div>
   <Lobby gameServer={server} lobbyServer={server} gameComponents={importedGames} />
-{/*   <BriscolaClient playerID='0'/>
-  <BriscolaClient playerID='1'/> */}
+  <BriscolaClient playerID='0'/>
   </div>
 ); 
 
