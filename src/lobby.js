@@ -11,8 +11,8 @@ import { LobbyAPI } from "./api.js"; // done
 
 // Components
 import { Briscola } from './GameLogic.js';
-import Board from "./board.js";
-import TemplatePage from "./templatePage"; // done
+import Board from "./Board.js";
+import TemplatePage from "./templatePage.js"; // done
 
 // Constants
 import { WEB_SERVER_URL, GAME_SERVER_URL, APP_PRODUCTION } from "./config.js"; // done
