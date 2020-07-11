@@ -23,7 +23,7 @@ body {
   height: 100%;
   width: 70px;
   margin-bottom: -10px;
-  background-image: url("../public/images/backside.jpg");
+  background-image: url("../../public/images/backside.jpg");
   background-size: cover;
   /*
   background-repeat: no-repeat;
