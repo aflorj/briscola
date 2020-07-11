@@ -6,9 +6,9 @@ import { APP_PRODUCTION, GAME_SERVER_URL } from "./config.js";
 import { Briscola } from './GameLogic.js';
 import { Board } from './Board.js';
 import { SocketIO } from 'boardgame.io/multiplayer';
-import HomePage from "./homePage.jsx";
-import HelpPage from "./helpPage.jsx";
-import JoinPage from "./joinPage.jsx";
+import HomePage from "./homePage.js";
+import HelpPage from "./helpPage.js";
+import JoinPage from "./joinPage.js";
 
 function App() {
   const history = useHistory();
