@@ -1,5 +1,5 @@
 import React from 'react';
-import './style.css';
+import './styles.style.css';
 
 export default function Oponent(props) {
     let ourplayer = props.handID;
