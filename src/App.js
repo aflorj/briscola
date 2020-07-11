@@ -5,8 +5,6 @@ import { Briscola } from './GameLogic.js';
 import { Lobby } from 'boardgame.io/react';
 import React from 'react';
 
-<Lobby gameServer={server} lobbyServer={server} gameComponents={importedGames} />
-
 const BriscolaClient = Client({
   game: Briscola,
   numPlayers: 2,
@@ -19,9 +17,7 @@ const server = `https://${window.location.hostname}`;
 const importedGames = [{ game: Briscola, board: Board }];
 
 const App = () => (
-  <div>
-  <BriscolaClient playerID='0'/>
-  </div>
+<Lobby gameServer={server} lobbyServer={server} gameComponents={importedGames} />
 ); 
 
 export default App;
