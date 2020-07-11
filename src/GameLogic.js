@@ -40,6 +40,9 @@ export const Briscola = {
     },
   },
 
+  minPlayers: 2,
+  maxPlayers: 2,
+  
   endIf: (G, ctx) => {
     let p0bounty = G.player_0.picked;
     let p1bounty = G.player_1.picked;
