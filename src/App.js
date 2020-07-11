@@ -11,7 +11,7 @@ const BriscolaClient = Client({
   numPlayers: 2,
   debug: false,
   board: Board,
-  multiplayer: SocketIO({ server: 'localhost:8000' }),
+  multiplayer: SocketIO({ server: server }),
 });
 
 const server = `https://${window.location.hostname}`;
