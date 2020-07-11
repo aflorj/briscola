@@ -9,8 +9,6 @@ const importedGames = [{ game: Briscola, board: Board }];
 
 const BriscolaClient = Client({
   game: Briscola,
-  numPlayers: 2,
-  debug: false,
   board: Board,
   multiplayer: SocketIO({ server: server }),
 });
