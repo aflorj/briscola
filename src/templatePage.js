@@ -18,7 +18,7 @@ class TemplatePage extends Component {
           bannerColor="#64CEAA"
           octoColor="#fff"
           size={80}
-          direction="left"
+          direction="right"
         />
       </div>
     );

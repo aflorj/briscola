@@ -2,20 +2,12 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { SocketIO } from "boardgame.io/multiplayer";
 import { Client } from "boardgame.io/react";
-
-// Styles
-import "./styles/lobby.css"; // done
-
-// API Helper
-import { LobbyAPI } from "./api.js"; // done
-
-// Components
+import "./styles/lobby.css";
+import { LobbyAPI } from "./api.js";
 import { Briscola } from './GameLogic.js';
 import Board from "./Board.js";
-import TemplatePage from "./templatePage.js"; // done
-
-// Constants
-import { WEB_SERVER_URL, GAME_SERVER_URL, APP_PRODUCTION } from "./config.js"; // done
+import TemplatePage from "./templatePage.js";
+import { WEB_SERVER_URL, GAME_SERVER_URL, APP_PRODUCTION } from "./config.js";
 
 const api = new LobbyAPI();
 const server = APP_PRODUCTION
@@ -51,7 +43,7 @@ class Lobby extends Component {
   componentWillUnmount() {
     window.removeEventListener("beforeunload", this.cleanup.bind(this));
   }
-  joinRoom = (player_no) => { //takoj prever kako ma on shranjene playerje !!!!!!!!!!!!
+  joinRoom = (player_no) => {
     const username = "Player " + player_no;
     if (this.state.id) {
       api.joinRoom(this.state.id, username, player_no).then(
@@ -110,7 +102,6 @@ class Lobby extends Component {
         return (
           <div>
             <div className="player-item">
-              <a className="player-item-edit"> (Edit) </a>
               {player.name} - You
               <div className="player-ready"></div>
             </div>
@@ -154,7 +145,7 @@ class Lobby extends Component {
     );
   };
   gameExistsView = () => {
-    const players = [0, 1]; // poglej kako se to uporablja naprej in kako ma on
+    const players = [0, 1];
     const server = APP_PRODUCTION
       ? `https://${window.location.hostname}`
       : WEB_SERVER_URL;

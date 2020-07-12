@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import TemplatePage from "./templatePage.js";
 import "./styles/joinPage.css";
 class JoinPage extends Component {
-  state = { id: "0000" };
+  state = { id: "" };
   handleSubmit = () => {
     //Route to page
     const history = this.props.history;

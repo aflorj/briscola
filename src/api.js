@@ -1,4 +1,4 @@
-import { GAME_NAME, GAME_SERVER_URL, APP_PRODUCTION } from "./config";
+import { GAME_NAME, GAME_SERVER_URL, APP_PRODUCTION } from "./config.js";
 import ky from "ky";
 const server = APP_PRODUCTION
   ? `https://${window.location.hostname}`
@@ -18,7 +18,7 @@ export class LobbyAPI {
   }
 
   async joinRoom(roomID, username, userid) {
-    const payload = { playerID: userid, playerName: username }; // poglej da se ujemajo idji in te stvari
+    const payload = { playerID: userid, playerName: username };
     const data = await this.api
       .post(roomID + "/join", { json: payload })
       .json();

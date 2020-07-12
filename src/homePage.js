@@ -4,7 +4,7 @@ import { LobbyAPI } from "./api.js";
 import TemplatePage from "./templatePage.js";
 const info_texts = {
   start: "Create a new room and invite your friend to join",
-  help: "Game rules and guide to playing Udaipur",
+  help: "Game rules and guide to playing Briscola",
   join: "Join a room using the room code",
 };
 const api = new LobbyAPI();
