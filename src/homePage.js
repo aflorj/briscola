@@ -2,32 +2,12 @@ import React, { Component } from "react";
 import "./styles/homePage.css";
 import { LobbyAPI } from "./api.js";
 import TemplatePage from "./templatePage.js";
-const info_texts = {
-  start: "Create a new room and invite your friend to join",
-  join: "Join a room using the room code",
-};
+import lobbyButton from "./images/lobbyButton.png";
 const api = new LobbyAPI();
 class HomePage extends Component {
   state = {
-    text: "",
     loading: false,
     redirect: null,
-  };
-  hoverIn = (src) => {
-    let infoText = "";
-    if (Object.keys(info_texts).includes(src)) {
-      infoText = info_texts[src];
-    } else {
-      console.log("Unrecognized key for info_text");
-    }
-    this.setState({
-      text: infoText,
-    });
-  };
-  hoverOut = () => {
-    this.setState({
-      text: "",
-    });
   };
   createGame = () => {
     console.log("createGame");
@@ -60,28 +40,27 @@ class HomePage extends Component {
             <div className="menu-cards">
               <div
                 className="card"
-                onMouseEnter={() => this.hoverIn("start")}
-                onMouseLeave={() => this.hoverOut()}
+                id="new-game"
                 onClick={() => this.createGame()}
               >
+                <img src={lobbyButton} alt={"New game"}/>
                 <div className="card-inside start">
                   <h1>new game</h1>
                 </div>
               </div>
               <div
                 className="card"
-                onMouseEnter={() => this.hoverIn("join")}
-                onMouseLeave={() => this.hoverOut()}
+                id="join-game"
                 onClick={() => {
                   history.push("/join");
                 }}
               >
+                <img src={lobbyButton} alt={"Join game"}/>
                 <div className="card-inside join">
                   <h1>join game</h1>
                 </div>
               </div>
             </div>
-            <div id="menu-description">{this.state.text}</div>
           </>
         }
       />

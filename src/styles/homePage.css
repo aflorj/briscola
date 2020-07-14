@@ -2,48 +2,38 @@
     font-size: 1vw;
     margin-left: auto;
     margin-right: auto;
-    margin-left: -60px;
     margin-top: 15vh;
     position: relative;
   }
-  #menu-description {
-    padding: 25px;
-  }
+
   .menu-cards .card {
-    width: 12vw;
-    height: 12vw;
-    background: white;
-    border-style: solid;
-    border-radius: 1vh;
     display: inline-flex;
     justify-content: center;
     align-items: center;
     margin: 16px;
     color: #616161;
-    /* margin-right: -60px; */
-    transition: margin 0.1s, width 0.1s, height 0.1s;
-  }
-  .menu-cards .card .card-inside {
-    width: 85%;
-    height: 85%;
-    border-radius: 0.8vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .menu-cards .card:hover {
-    color: #212121;
-    margin-top: 0px;
-    width: 20vw;
-    height: 20vw;
-    margin-right: 10px;
-    z-index: 1;
-    cursor: pointer;
-  }
-  .menu-cards .card .card-inside.start {
-    background: #81c784;
   }
 
-  .menu-cards .card .card-inside.join {
-    background: #81d4fa;
+  .menu-cards .card:hover {
+    color: #212121;
+    cursor: pointer;
+  }
+
+  .card-inside {
+    z-index: 2;
+    position: relative;
+  }
+
+  .card > img {
+    position: absolute;
+    z-index: 1;
+  }
+
+  #new-game:hover {
+    transform: rotate(-33deg);
+  }
+
+  #join-game:hover {
+    transform: rotate(42deg);
+
   }
