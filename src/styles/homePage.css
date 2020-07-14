@@ -10,7 +10,7 @@
     padding: 25px;
   }
   .menu-cards .card {
-    width: 8vw;
+    width: 12vw;
     height: 12vw;
     background: white;
     border-style: solid;
@@ -20,8 +20,8 @@
     align-items: center;
     margin: 16px;
     color: #616161;
-    margin-right: -60px;
-    transition: margin 0.3s, width 0.2s, height 0.2s;
+    /* margin-right: -60px; */
+    transition: margin 0.1s, width 0.1s, height 0.1s;
   }
   .menu-cards .card .card-inside {
     width: 85%;
@@ -34,8 +34,8 @@
   .menu-cards .card:hover {
     color: #212121;
     margin-top: 0px;
-    width: 10vw;
-    height: 15vw;
+    width: 20vw;
+    height: 20vw;
     margin-right: 10px;
     z-index: 1;
     cursor: pointer;
@@ -43,9 +43,7 @@
   .menu-cards .card .card-inside.start {
     background: #81c784;
   }
-  .menu-cards .card .card-inside.help {
-    background: #e57373;
-  }
+
   .menu-cards .card .card-inside.join {
     background: #81d4fa;
   }

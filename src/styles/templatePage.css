@@ -6,34 +6,10 @@ body {
 }
 .full_height {
   height: 100%;
-  background: #fff9c4;
+  background: white;
   text-align: center;
 }
-.title {
-  display: inline-block;
-  margin-left: auto;
-  margin-right: auto;
-  height: 70px;
-  margin-top: 50px;
-  margin-bottom: 50px;
-  width: 100%;
-}
-.udaipur-logo {
-  display: inline-flex;
-  height: 100%;
-  width: 70px;
-  margin-bottom: -10px;
-  background-image: url("../images/backside.jpg");
-  background-size: cover;
-  /*
-  background-repeat: no-repeat;
-  background-position: 50% 50%; */
-}
-.title-text {
-  height: 100%;
-  display: inline-flex;
-  margin: auto;
-  font-size: 5vh;
-  padding: 12px;
-  color: #414141;
+
+.logo {
+  padding-top: 30px;
 }

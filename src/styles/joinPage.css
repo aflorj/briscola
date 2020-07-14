@@ -18,12 +18,9 @@
   .game-code-submit {
     font-family: Varela Round;
     background-color: #9fa8da;
-    /*   width: 12vmin;
-      height: 8vmin; */
     min-width: 50px;
     min-height: 30px;
     font-size: 2vmin;
-    /*   border: none; */
     color: #111b1b;
     border-radius: 8px;
     text-align: center;

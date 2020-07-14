@@ -4,7 +4,6 @@ import { LobbyAPI } from "./api.js";
 import TemplatePage from "./templatePage.js";
 const info_texts = {
   start: "Create a new room and invite your friend to join",
-  help: "Game rules and guide to playing Briscola",
   join: "Join a room using the room code",
 };
 const api = new LobbyAPI();
@@ -79,18 +78,6 @@ class HomePage extends Component {
               >
                 <div className="card-inside join">
                   <h1>join game</h1>
-                </div>
-              </div>
-              <div
-                className="card"
-                onMouseEnter={() => this.hoverIn("help")}
-                onMouseLeave={() => this.hoverOut()}
-                onClick={() => {
-                  history.push("/help");
-                }}
-              >
-                <div className="card-inside help">
-                  <h1>game help</h1>
                 </div>
               </div>
             </div>

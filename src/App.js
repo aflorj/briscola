@@ -7,7 +7,6 @@ import { Briscola } from './GameLogic.js';
 import Board from './Board.js';
 import { SocketIO } from 'boardgame.io/multiplayer';
 import HomePage from "./homePage.js";
-import HelpPage from "./helpPage.js";
 import JoinPage from "./joinPage.js";
 
 function App() {
@@ -29,11 +28,6 @@ function App() {
         path="/home"
         exact
         render={(props) => <HomePage {...props} history={history} />}
-      />
-      <Route
-        path="/help"
-        exact
-        render={(props) => <HelpPage {...props} history={history} />}
       />
       <Route
         path="/join"
