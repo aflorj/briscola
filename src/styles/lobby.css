@@ -17,20 +17,20 @@
     border-radius: 8px;
     margin: 8px;
     border-color: #757575;
-    background-color: #cbba83;
+    background-color: whitesmoke;
   }
   .game-link-button {
     font-family: Varela Round;
-    background-color: #9fa8da;
+    background-color: whitesmoke;
     font-size: 2vmin;
     color: #1b1b1b;
     border-radius: 8px;
     margin-bottom: 8px;
     cursor: pointer;
-    box-shadow: -0px 8px 0px 0px #616161;
+    box-shadow: 5px 8px 0px 0px #616161;
   }
   .game-link-button:hover {
-    background-color: #9575cd;
+    background-color: white;
   }
   
   .game-link-button:active {

@@ -102,7 +102,7 @@ class Lobby extends Component {
         return (
           <div>
             <div className="player-item">
-              {player.name} - You
+              {/* {player.name} -  */}You
               <div className="player-ready"></div>
             </div>
           </div>

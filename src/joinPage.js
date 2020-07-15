@@ -18,18 +18,18 @@ class JoinPage extends Component {
       <TemplatePage
         content={
           <>
-            Enter the Game Code below to join the game:
             <form onSubmit={this.handleSubmit}>
               <input
                 type="text"
                 className="game-code-tb"
+                placeholder="Enter the game code here"
                 value={this.state.id}
                 onChange={this.handleChange}
               />
               <br />
               <input
                 type="submit"
-                value="Submit"
+                value="Join"
                 className="game-code-submit"
               />
             </form>

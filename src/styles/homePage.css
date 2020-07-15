@@ -11,6 +11,7 @@
     justify-content: center;
     align-items: center;
     margin: 16px;
+    padding: 10px;
     color: #616161;
   }
 
@@ -27,13 +28,16 @@
   .card > img {
     position: absolute;
     z-index: 1;
+    width: 100%;
+    max-width: 100px;
+    height: auto;
+    transform: rotate(90deg);
   }
 
   #new-game:hover {
-    transform: rotate(-33deg);
+    transform: rotate(-4deg);
   }
 
   #join-game:hover {
-    transform: rotate(42deg);
-
+    transform: rotate(4deg);
   }
