@@ -151,8 +151,8 @@ class Lobby extends Component {
       : WEB_SERVER_URL;
     return (
       <>
-        <div>Invite your friend by sending them the link below</div>
         <div className="game-link">
+        You can invite your friend by sharing the link:
           <div
             className="game-link-box"
             ref={(gameLinkBox) => (this.gameLinkBox = gameLinkBox)}
@@ -164,8 +164,8 @@ class Lobby extends Component {
           </div>
         </div>
         <div>
-          Game Code
-          <br /> <div class="game-code">{this.state.id}</div>
+        or by sharing the game code:
+          <div className="game-code">{this.state.id}</div>
         </div>
         <div className="player-list">
           {players.map((p) => {
@@ -175,7 +175,7 @@ class Lobby extends Component {
         </div>
         <div>
           <br />
-          The game will begin once all the players join!
+          Game will begin automatically as soon as two players are in this lobby!
         </div>
       </>
     );
@@ -184,9 +184,9 @@ class Lobby extends Component {
     return (
       <>
         <div>
-          Sorry! This game does not exist.
+          404. Lobby with this game code not found.
           <br />
-          <Link to="/">Create a new one</Link>
+          <Link to="/">Go back and create a new lobby.</Link>
         </div>
       </>
     );

@@ -51,15 +51,15 @@
     height: 4px;
     width: 100%;
     margin: auto;
-    background-color: #66bb6a;
+    background-color: lightgreen;
   }
   .player-waiting {
     height: 4px;
     width: 100%;
     margin: auto;
-    background-color: #ffca28;
+    background-color: whitesmoke;
     animation-name: pulse;
-    animation-duration: 2s;
+    animation-duration: 8s;
     animation-iteration-count: infinite;
   }
   
