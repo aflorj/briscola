@@ -15,8 +15,7 @@
     "react-github-corner": "^2.3.0",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.1",
-    "three": "^0.118.3"
+    "react-scripts": "3.4.1"
   },
   "scripts": {
     "start": "node -r esm ./server.js",

@@ -16,6 +16,7 @@ const server = APP_PRODUCTION
 const GameClient = Client({
   game: Briscola,
   board: Board,
+  debug: false,
   multiplayer: SocketIO({
     server: server,
   }),

@@ -6,12 +6,12 @@ body {
 }
 .full_height {
   height: 100%;
-  background: #808F85;
+  background: #A89070;
   text-align: center;
 }
 
 .logo > img {
-  padding-top: 30px;
+  margin-top: 70px;
   width: 100%;
   max-width: 310px;
   height: auto;

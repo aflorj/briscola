@@ -1,35 +1,24 @@
 import React from 'react';
-import * as THREE from 'three';
-
-const scene = new THREE.Scene();
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(window.innerWidth, window.innerHeight);
-const camera = new THREE.PerspectiveCamera(
-    75,
-    window.innerWidth / window.innerHeight,
-    0.1,
-    1000
-);
+import Player from './Player.js';
+import Oponent from './Oponent.js';
+import Winscreen from './Winscreen.js';
+import Middle from './Middle.js';
+/* import './styles/style.css'; */
 
 function Board(props) {
     if (props.ctx.turn < 41) {
     return (
         <>
-        {/* threejs render */}
+        <span>Player{props.playerID} view <br /></span>
+        <div className="board">
+        <Oponent handID={props.playerID} gameData={props} />
+        <Middle gameData={props} />
+        <Player handID={props.playerID} gameData={props} />
+        </div>
         </>
     )} else {
-        return (
-            <>
-            {/* Victory screen */}
-            </>
-        )
+        return <Winscreen playerID={props.playerID} gameData={props} />
     }
 }
 
 export default Board;
-
-        /* <div className="board">
-        <Oponent handID={props.playerID} gameData={props} />
-        <Middle gameData={props} />
-        <Player handID={props.playerID} gameData={props} />
-        </div> */
