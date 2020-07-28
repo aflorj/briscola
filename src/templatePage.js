@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import GithubCorner from "react-github-corner";
 import "./styles/templatePage.css";
 import { Link } from "react-router-dom";
-import briscolaLogo from './images/briscolaLogoTransparent.png';
 
 class TemplatePage extends Component {
   render() {
@@ -10,7 +9,7 @@ class TemplatePage extends Component {
       <div className="full_height">
         <Link to="/" style={{ textDecoration: "none" }}>
         <div className="logo">
-        <img src={briscolaLogo} alt={'briscola-logo'}/>
+        <img src={'/images/briscolaLogoTransparent.png'} alt={'briscola-logo'}/>
         </div>
         </Link>
         {this.props.content}

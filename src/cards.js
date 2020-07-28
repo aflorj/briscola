@@ -8,7 +8,7 @@ const twoOfCoins = {
     suit: 'coins',
     strength: 1,
     points: 0,
-    imagePath: '/images/twoOfCoins.jpg',
+    imagePath: '/images/twoOfCoins.png',
     alt: 'Two of Coins'
   };
   
@@ -16,7 +16,7 @@ const twoOfCoins = {
     suit: 'coins',
     strength: 2,
     points: 0,
-    imagePath: '/images/fourOfCoins.jpg',
+    imagePath: '/images/fourOfCoins.png',
     alt: 'Four of Coins'
   };
   
@@ -24,7 +24,7 @@ const twoOfCoins = {
     suit: 'coins',
     strength: 3,
     points: 0,
-    imagePath: '/images/fiveOfCoins.jpg',
+    imagePath: '/images/fiveOfCoins.png',
     alt: 'Five of Coins'
   };
   
@@ -32,7 +32,7 @@ const twoOfCoins = {
     suit: 'coins',
     strength: 4,
     points: 0,
-    imagePath: '/images/sixOfCoins.jpg',
+    imagePath: '/images/sixOfCoins.png',
     alt: 'Six of Coins'
   };
   
@@ -40,7 +40,7 @@ const twoOfCoins = {
     suit: 'coins',
     strength: 5,
     points: 0,
-    imagePath: '/images/sevenOfCoins.jpg',
+    imagePath: '/images/sevenOfCoins.png',
     alt: 'Seven of Coins'
   };
   
@@ -48,7 +48,7 @@ const twoOfCoins = {
     suit: 'coins',
     strength: 6,
     points: 2,
-    imagePath: '/images/knaveOfCoins.jpg',
+    imagePath: '/images/knaveOfCoins.png',
     alt: 'Knave of Coins'
   };
   
@@ -56,7 +56,7 @@ const twoOfCoins = {
     suit: 'coins',
     strength: 7,
     points: 3,
-    imagePath: '/images/knightOfCoins.jpg',
+    imagePath: '/images/knightOfCoins.png',
     alt: 'Knight of Coins'
   };
   
@@ -64,7 +64,7 @@ const twoOfCoins = {
     suit: 'coins',
     strength: 8,
     points: 4,
-    imagePath: '/images/kingOfCoins.jpg',
+    imagePath: '/images/kingOfCoins.png',
     alt: 'King of Coins'
   };
   
@@ -72,7 +72,7 @@ const twoOfCoins = {
     suit: 'coins',
     strength: 9,
     points: 10,
-    imagePath: '/images/threeOfCoins.jpg',
+    imagePath: '/images/threeOfCoins.png',
     alt: 'Three of Coins'
   };
   
@@ -80,7 +80,7 @@ const twoOfCoins = {
     suit: 'coins',
     strength: 10,
     points: 11,
-    imagePath: '/images/aceOfCoins.jpg',
+    imagePath: '/images/aceOfCoins.png',
     alt: 'Ace of Coins'
   };
   
@@ -90,7 +90,7 @@ const twoOfCoins = {
     suit: 'swords',
     strength: 1,
     points: 0,
-    imagePath: '/images/twoOfSwords.jpg',
+    imagePath: '/images/twoOfSwords.png',
     alt: 'Two of Swords'
   };
   
@@ -98,7 +98,7 @@ const twoOfCoins = {
     suit: 'swords',
     strength: 2,
     points: 0,
-    imagePath: '/images/fourOfSwords.jpg',
+    imagePath: '/images/fourOfSwords.png',
     alt: 'Four of Swords'
   };
   
@@ -106,7 +106,7 @@ const twoOfCoins = {
     suit: 'swords',
     strength: 3,
     points: 0,
-    imagePath: '/images/fiveOfSwords.jpg',
+    imagePath: '/images/fiveOfSwords.png',
     alt: 'Five of Swords'
   };
   
@@ -114,7 +114,7 @@ const twoOfCoins = {
     suit: 'swords',
     strength: 4,
     points: 0,
-    imagePath: '/images/sixOfSwords.jpg',
+    imagePath: '/images/sixOfSwords.png',
     alt: 'Six of Swords'
   };
   
@@ -122,7 +122,7 @@ const twoOfCoins = {
     suit: 'swords',
     strength: 5,
     points: 0,
-    imagePath: '/images/sevenOfSwords.jpg',
+    imagePath: '/images/sevenOfSwords.png',
     alt: 'Seven of Swords'
   };
   
@@ -130,7 +130,7 @@ const twoOfCoins = {
     suit: 'swords',
     strength: 6,
     points: 2,
-    imagePath: '/images/knaveOfSwords.jpg',
+    imagePath: '/images/knaveOfSwords.png',
     alt: 'Knave of Swords'
   };
   
@@ -138,7 +138,7 @@ const twoOfCoins = {
     suit: 'swords',
     strength: 7,
     points: 3,
-    imagePath: '/images/knightOfSwords.jpg',
+    imagePath: '/images/knightOfSwords.png',
     alt: 'Knight of Swords'
   };
   
@@ -146,7 +146,7 @@ const twoOfCoins = {
     suit: 'swords',
     strength: 8,
     points: 4,
-    imagePath: '/images/kingOfSwords.jpg',
+    imagePath: '/images/kingOfSwords.png',
     alt: 'King of Swords'
   };
   
@@ -154,7 +154,7 @@ const twoOfCoins = {
     suit: 'swords',
     strength: 9,
     points: 10,
-    imagePath: '/images/threeOfSwords.jpg',
+    imagePath: '/images/threeOfSwords.png',
     alt: 'Three of Swords'
   };
   
@@ -162,7 +162,7 @@ const twoOfCoins = {
     suit: 'swords',
     strength: 10,
     points: 11,
-    imagePath: '/images/aceOfSwords.jpg',
+    imagePath: '/images/aceOfSwords.png',
     alt: 'Ace of Swords'
   };
   
@@ -172,7 +172,7 @@ const twoOfCoins = {
     suit: 'cups',
     strength: 1,
     points: 0,
-    imagePath: '/images/twoOfCups.jpg',
+    imagePath: '/images/twoOfCups.png',
     alt: 'Two of Cups'
   };
   
@@ -180,7 +180,7 @@ const twoOfCoins = {
     suit: 'cups',
     strength: 2,
     points: 0,
-    imagePath: '/images/fourOfCups.jpg',
+    imagePath: '/images/fourOfCups.png',
     alt: 'Four of Cups'
   };
   
@@ -188,7 +188,7 @@ const twoOfCoins = {
     suit: 'cups',
     strength: 3,
     points: 0,
-    imagePath: '/images/fiveOfCups.jpg',
+    imagePath: '/images/fiveOfCups.png',
     alt: 'Five of Cups'
   };
   
@@ -196,7 +196,7 @@ const twoOfCoins = {
     suit: 'cups',
     strength: 4,
     points: 0,
-    imagePath: '/images/sixOfCups.jpg',
+    imagePath: '/images/sixOfCups.png',
     alt: 'Six of Cups'
   };
   
@@ -204,7 +204,7 @@ const twoOfCoins = {
     suit: 'cups',
     strength: 5,
     points: 0,
-    imagePath: '/images/sevenOfCups.jpg',
+    imagePath: '/images/sevenOfCups.png',
     alt: 'Seven of Cups'
   };
   
@@ -212,7 +212,7 @@ const twoOfCoins = {
     suit: 'cups',
     strength: 6,
     points: 2,
-    imagePath: '/images/knaveOfCups.jpg',
+    imagePath: '/images/knaveOfCups.png',
     alt: 'Knave of Cups'
   };
   
@@ -220,7 +220,7 @@ const twoOfCoins = {
     suit: 'cups',
     strength: 7,
     points: 3,
-    imagePath: '/images/knightOfCups.jpg',
+    imagePath: '/images/knightOfCups.png',
     alt: 'Knight of Cups'
   };
   
@@ -228,7 +228,7 @@ const twoOfCoins = {
     suit: 'cups',
     strength: 8,
     points: 4,
-    imagePath: '/images/kingOfCups.jpg',
+    imagePath: '/images/kingOfCups.png',
     alt: 'King of Cups'
   };
   
@@ -236,7 +236,7 @@ const twoOfCoins = {
     suit: 'cups',
     strength: 9,
     points: 10,
-    imagePath: '/images/threeOfCups.jpg',
+    imagePath: '/images/threeOfCups.png',
     alt: 'Three of Cups'
   };
   
@@ -244,7 +244,7 @@ const twoOfCoins = {
     suit: 'cups',
     strength: 10,
     points: 11,
-    imagePath: '/images/aceOfCups.jpg',
+    imagePath: '/images/aceOfCups.png',
     alt: 'Ace of Cups'
   };
   
@@ -254,7 +254,7 @@ const twoOfCoins = {
     suit: 'batons',
     strength: 1,
     points: 0,
-    imagePath: '/images/twoOfBatons.jpg',
+    imagePath: '/images/twoOfBatons.png',
     alt: 'Two of Batons'
   };
   
@@ -262,7 +262,7 @@ const twoOfCoins = {
     suit: 'batons',
     strength: 2,
     points: 0,
-    imagePath: '/images/fourOfBatons.jpg',
+    imagePath: '/images/fourOfBatons.png',
     alt: 'Four of Batons'
   };
   
@@ -270,7 +270,7 @@ const twoOfCoins = {
     suit: 'batons',
     strength: 3,
     points: 0,
-    imagePath: '/images/fiveOfBatons.jpg',
+    imagePath: '/images/fiveOfBatons.png',
     alt: 'Five of Batons'
   };
   
@@ -278,7 +278,7 @@ const twoOfCoins = {
     suit: 'batons',
     strength: 4,
     points: 0,
-    imagePath: '/images/sixOfBatons.jpg',
+    imagePath: '/images/sixOfBatons.png',
     alt: 'Six of Batons'
   };
   
@@ -286,7 +286,7 @@ const twoOfCoins = {
     suit: 'batons',
     strength: 5,
     points: 0,
-    imagePath: '/images/sevenOfBatons.jpg',
+    imagePath: '/images/sevenOfBatons.png',
     alt: 'Seven of Batons'
   };
   
@@ -294,7 +294,7 @@ const twoOfCoins = {
     suit: 'batons',
     strength: 6,
     points: 2,
-    imagePath: '/images/knaveOfBatons.jpg',
+    imagePath: '/images/knaveOfBatons.png',
     alt: 'Knave of Batons'
   };
   
@@ -302,7 +302,7 @@ const twoOfCoins = {
     suit: 'batons',
     strength: 7,
     points: 3,
-    imagePath: '/images/knightOfBatons.jpg',
+    imagePath: '/images/knightOfBatons.png',
     alt: 'Knight of Batons'
   };
   
@@ -310,7 +310,7 @@ const twoOfCoins = {
     suit: 'batons',
     strength: 8,
     points: 4,
-    imagePath: '/images/kingOfBatons.jpg',
+    imagePath: '/images/kingOfBatons.png',
     alt: 'King of Batons'
   };
   
@@ -318,7 +318,7 @@ const twoOfCoins = {
     suit: 'batons',
     strength: 9,
     points: 10,
-    imagePath: '/images/threeOfBatons.jpg',
+    imagePath: '/images/threeOfBatons.png',
     alt: 'Three of Batons'
   };
   
@@ -326,7 +326,7 @@ const twoOfCoins = {
     suit: 'batons',
     strength: 10,
     points: 11,
-    imagePath: '/images/aceOfBatons.jpg',
+    imagePath: '/images/aceOfBatons.png',
     alt: 'Ace of Batons'
   };
   

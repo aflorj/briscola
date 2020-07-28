@@ -35,9 +35,9 @@
   }
 
   #new-game:hover {
-    transform: rotate(-4deg);
+    transform: rotate(-6deg);
   }
 
   #join-game:hover {
-    transform: rotate(4deg);
+    transform: rotate(6deg);
   }
