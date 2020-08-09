@@ -4,7 +4,7 @@ import { SocketIO } from "boardgame.io/multiplayer";
 import { Client } from "boardgame.io/react";
 import "./styles/lobby.css";
 import { LobbyAPI } from "./api.js";
-import { Briscola } from './GameLogic.js';
+import { Briscola } from "./GameLogic.js";
 import Board from "./Board.js";
 import TemplatePage from "./templatePage.js";
 import { WEB_SERVER_URL, GAME_SERVER_URL, APP_PRODUCTION } from "./config.js";
@@ -59,7 +59,7 @@ class Lobby extends Component {
     }
   };
   checkRoomStateAndJoin = () => {
-    console.log("pinging room endpoint to check whos there...");
+    console.log("Pinging room endpoint to see who's there.");
     if (this.state.id) {
       api.whosInRoom(this.state.id).then(
         (players) => {
@@ -71,7 +71,7 @@ class Lobby extends Component {
           this.joinRoom(myPlayerNum);
         },
         (error) => {
-          console.log("room does not exist");
+          console.log("Room does not exist");
           this.setState({
             id: null,
           });
@@ -89,7 +89,7 @@ class Lobby extends Component {
           });
         },
         (error) => {
-          console.log("room does not exist");
+          console.log("Room does not exist");
           this.setState({
             id: null,
           });
@@ -103,7 +103,7 @@ class Lobby extends Component {
         return (
           <div>
             <div className="player-item">
-              {/* {player.name} -  */}You
+              You [connected]
               <div className="player-ready"></div>
             </div>
           </div>
@@ -121,9 +121,12 @@ class Lobby extends Component {
     } else {
       return (
         <div>
-          <div className="player-item loading">
-            Waiting for player
-            <div className="player-waiting"></div>
+          <div id="bars1">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
           </div>
         </div>
       );
@@ -142,7 +145,7 @@ class Lobby extends Component {
       function () {
         this.setState({ copied: false });
       }.bind(this),
-      2000
+      600
     );
   };
   gameExistsView = () => {
@@ -153,7 +156,8 @@ class Lobby extends Component {
     return (
       <>
         <div className="game-link">
-        You can invite your friend by sharing the link:
+          You can invite your friend by sharing the link or game code below:
+          <br />
           <div
             className="game-link-box"
             ref={(gameLinkBox) => (this.gameLinkBox = gameLinkBox)}
@@ -161,13 +165,11 @@ class Lobby extends Component {
             {`${server}/lobby/${this.state.id}`}
           </div>
           <div className="game-link-button" onClick={this.copyToClipboard}>
-            {this.state.copied ? "Copied️!" : " Copy "}
+            {this.state.copied ? "copied️!" : " copy "}
           </div>
         </div>
-        <div>
-        or by sharing the game code:
-          <div className="game-code">{this.state.id}</div>
-        </div>
+        {this.state.joined.length} out of the 2 required players are in the
+        lobby with game code<div className="game-code">{this.state.id}</div>:
         <div className="player-list">
           {players.map((p) => {
             const joinedPlayer = this.state.joined[p];
@@ -176,7 +178,7 @@ class Lobby extends Component {
         </div>
         <div>
           <br />
-          Game will begin automatically as soon as two players are in this lobby!
+          Game will begin as soon as two players are in this lobby!
         </div>
       </>
     );

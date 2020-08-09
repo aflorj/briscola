@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import TemplatePage from "./templatePage.js";
 import "./styles/joinPage.css";
+
 class JoinPage extends Component {
   state = { id: "" };
   handleSubmit = () => {
@@ -21,7 +22,8 @@ class JoinPage extends Component {
             <form onSubmit={this.handleSubmit}>
               <input
                 type="text"
-                className="game-code-tb"
+                spellCheck="false"
+                className="game-code-window"
                 placeholder="Enter the game code here"
                 value={this.state.id}
                 onChange={this.handleChange}
@@ -30,7 +32,7 @@ class JoinPage extends Component {
               <input
                 type="submit"
                 value="Join"
-                className="game-code-submit"
+                className="submit-code"
               />
             </form>
           </>

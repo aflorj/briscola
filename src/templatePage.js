@@ -16,8 +16,8 @@ class TemplatePage extends Component {
         <GithubCorner
           href={"https://github.com/aflorj/briscola"}
           target={"_blank"}
-          bannerColor="#fff"
-          octoColor="#000"
+          bannerColor="#ffffff"
+          octoColor="#000000"
           size={85}
           direction="right"
         />

@@ -9,7 +9,7 @@ export default function PlayedCard(props) {
     } else {
         return (
             <div className='playedCard'>
-                <img src={card.imagePath} alt={card.alt} key={card.alt}/>
+                <img className="playing-card" src={card.imagePath} alt={card.alt} key={card.alt}/>
             </div>
         )
     }

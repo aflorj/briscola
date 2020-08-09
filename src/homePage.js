@@ -37,30 +37,22 @@ class HomePage extends Component {
       <TemplatePage
         content={
           <>
-            <div className="menu-cards">
               <div
-                className="card"
+                className="menu-button"
                 id="new-game"
                 onClick={() => this.createGame()}
               >
-                <img src={'/images/lobbyButton.png'} alt={"New game"}/>
-                <div className="card-inside start">
-                  <h1>new game</h1>
-                </div>
+                  <p>New game</p>
               </div>
               <div
-                className="card"
+                className="menu-button"
                 id="join-game"
                 onClick={() => {
                   history.push("/join");
                 }}
               >
-                <img src={'/images/lobbyButton.png'} alt={"Join game"}/>
-                <div className="card-inside join">
-                  <h1>join game</h1>
-                </div>
+                  <p>Join game</p>
               </div>
-            </div>
           </>
         }
       />

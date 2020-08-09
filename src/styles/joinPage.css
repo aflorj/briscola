@@ -1,38 +1,33 @@
-.game-code-tb {
-    padding: 0;
-    height: 40px;
-    position: relative;
-    left: 0;
+.game-code-window {
+    font-family: 'Cairo', Georgia, sans-serif;
+    text-align: center;
+    height: 50px;
+    padding: 15px;
+    font-size: 28px;
+    border-radius: 8px;
+    margin: 8px;
+    background-color: #ffffff;
     outline: none;
-    padding: 12px;
-    background-color: whitesmoke;
-    text-align: center;
-    border: solid;
-    border-radius: 8px;
-    margin: 8px;
-    border-color: #757575;
-    font-size: 26px;
-  }
-  .game-code-tb:focus::placeholder {
-    color:transparent;
-  }
+    position: relative;
+}
 
-  .game-code-submit {
-    font-family: Varela Round;
-    background-color: whitesmoke;
-    min-width: 50px;
-    min-height: 30px;
-    font-size: 2vmin;
-    color: #111b1b;
-    border-radius: 8px;
-    text-align: center;
-    display: inline-block;
-    cursor: pointer;
-    box-shadow: 5px 8px 0px 0px #616161;
-    white-space: normal;
+.game-code-window:focus::placeholder {
+    color: transparent;
+}
+
+.submit-code {
+    font-family: 'Cairo', Georgia, sans-serif;
+    background-color: #ffffff;
+    font-size: 20px;
     margin: 8px;
-  }
-  .game-code-submit:active {
-    box-shadow: -0px 2px 0px 0px #616161;
-    transform: translateY(4px) translateX(-1px);
-  }
+    cursor: pointer;
+    display: inline-block;
+    white-space: normal;
+    outline: none;
+    box-shadow: 0px 4px 4px 0px #616161;
+    border-radius: 8px;
+}
+
+.submit-code:hover {
+    background-color: #4b7554;
+}

@@ -1,18 +1,19 @@
-html,
-body {
-  height: 100%;
-  font-family: Varela Round;
-  margin: 0;
-}
 .full_height {
-  height: 100%;
-  background: #A89070;
-  text-align: center;
+    height: 100%;
+    text-align: center;
+    font-size: 25px;
+}
+
+.logo {
+    display: inline-block;
 }
 
 .logo > img {
-  margin-top: 70px;
-  width: 100%;
-  max-width: 310px;
-  height: auto;
+    margin-top: 15%;
+    max-width: 300px;
+    padding-bottom: 10px;
+}
+
+h2 {
+    font-size: 2em;
 }

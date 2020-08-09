@@ -1,16 +1,34 @@
-import React from 'react';
+import React from "react";
+import { useTransition, animated } from 'react-spring';
 
 export default function Player(props) {
-    let cardsToRender = props.gameData.G['player_' + props.handID].cards;
-    return (
-        <>
-        <div className="hero-hand">
-        {cardsToRender.map((x, index) =>
-        <img src={x.imagePath} alt={x.alt} key={x.alt} onClick={() => {props.gameData.moves.playCard(index)}}/>)}
-        </div>
-        <div className="hero-picked">
-            <p>Pobrane karte</p>
-        </div>
-        </>
-    )
+  let moves = props.gameData.moves;
+  let cardsToRender = props.gameData.G["player_" + props.handID].cards;
+  const transitions = useTransition(cardsToRender, item => item.alt, {
+    from: { opacity: 0, transform: "translate3d(100px, 0px, 0)"},
+    enter: { opacity: 1, transform: "translate3d(0, 0px, 0)"},
+    leave: { opacity: 0.5, transform: "tranlate3d(0, -100px, 0)"},
+  });
+  return (
+    <>
+    <div className="hero-hand">
+      {transitions.map((x, index, props) => {
+        return (
+          <div clasName="card-wrapper">
+          <animated.img
+            className="playing-card"
+            src={x.item.imagePath}
+            alt={x.item.alt}
+            key={x.item.alt}
+            style={x.props}
+            onClick={() => {
+              moves.playCard(index);
+            }}
+          />
+          </div>
+        );
+      })}
+    </div>
+    </>
+  );
 }

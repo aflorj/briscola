@@ -1,43 +1,11 @@
-.menu-cards {
-    font-size: 1vw;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 15vh;
-    position: relative;
-  }
-
-  .menu-cards .card {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    margin: 16px;
-    padding: 10px;
-    color: #616161;
-  }
-
-  .menu-cards .card:hover {
-    color: #212121;
+.menu-button {
     cursor: pointer;
-  }
+}
 
-  .card-inside {
-    z-index: 2;
-    position: relative;
-  }
+.menu-button:hover {
+    color: #ffffff;
+}
 
-  .card > img {
-    position: absolute;
-    z-index: 1;
-    width: 100%;
-    max-width: 100px;
-    height: auto;
-    transform: rotate(90deg);
-  }
-
-  #new-game:hover {
-    transform: rotate(-6deg);
-  }
-
-  #join-game:hover {
-    transform: rotate(6deg);
-  }
+p {
+    font-size: 35px;
+}

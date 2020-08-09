@@ -83,6 +83,7 @@ function prepareGame() {
     evaluated: false,
     winner: 0,
     loser: 1,
+    middle: []
   };
 }
 
@@ -90,6 +91,7 @@ function playCard(G, ctx, cardID) {
   let playerID = "player_" + ctx.currentPlayer;
   let currentPlayer = G[playerID];
   currentPlayer.played = currentPlayer.cards.splice(cardID, 1)[0];
+  G.middle.push(currentPlayer.played);
   ctx.events.endTurn();
 }
 
@@ -148,6 +150,7 @@ function evaluate(G) {
 function cleanup(G) {
   G.player_0.played = null;
   G.player_1.played = null;
+  G.middle = [];
   G.evaluated = false;
   console.log(
     "Cards were moved from 'played' to the winner's 'picked' array and a cleanup was performed."
