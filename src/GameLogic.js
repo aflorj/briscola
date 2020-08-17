@@ -83,7 +83,10 @@ function prepareGame() {
     evaluated: false,
     winner: 0,
     loser: 1,
-    middle: []
+    middle: [],
+
+    //experimental
+    previousRound: []
   };
 }
 
@@ -101,6 +104,10 @@ function evaluate(G) {
   let p1 = G.player_1.played;
   let p0picked = G.player_0.picked;
   let p1picked = G.player_1.picked;
+
+    // experimetal
+    G.previousRound[0] = G["player_" + G.winner].played;
+    G.previousRound[1] = G["player_" + G.loser].played;
 
   if (p0.suit === p1.suit) {
     if (p0.strength > p1.strength) {
