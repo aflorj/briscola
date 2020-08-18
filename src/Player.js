@@ -1,8 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useTransition, animated } from "react-spring";
 
 export default function Player(props) {
   let moves = props.gameData.moves;
+
+  useEffect(() => {
+    const keyPressHandler = (e) => {
+      const key = Number(e.key);
+      if (key >= 1 && key <= 3)  {
+        moves.playCard(key - 1);
+      }
+      };
+
+    document.addEventListener('keydown', keyPressHandler);
+    return () => {
+      document.removeEventListener('keydown', keyPressHandler);
+    };
+  }, [moves]);
+
   let cardsToRender = props.gameData.G["player_" + props.handID].cards;
   const transitions = useTransition(cardsToRender, (item) => item.alt, {
     from: { opacity: 0, transform: "translate3d(100px, 0px, 0)" },
