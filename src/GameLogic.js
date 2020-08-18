@@ -1,4 +1,4 @@
-import { shuffledDeck } from "./cards.js";
+import { deck, shuffleDeck } from "./cards.js";
 
 export const Briscola = {
   name: "Briscola",
@@ -79,7 +79,7 @@ function prepareGame() {
     },
 
     briscola: null,
-    deckOnBoard: shuffledDeck,
+    deckOnBoard: shuffleDeck(deck),
     evaluated: false,
     winner: 0,
     loser: 1,

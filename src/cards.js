@@ -349,6 +349,4 @@ const twoOfCoins = {
     return deck;
 }
 
-let shuffledDeck = shuffleDeck(deck);
-
-export { shuffledDeck };
+export { deck, shuffleDeck };
