@@ -7,14 +7,14 @@ export default function Player(props) {
   useEffect(() => {
     const keyPressHandler = (e) => {
       const key = Number(e.key);
-      if (key >= 1 && key <= 3)  {
+      if (key >= 1 && key <= 3) {
         moves.playCard(key - 1);
       }
-      };
+    };
 
-    document.addEventListener('keydown', keyPressHandler);
+    document.addEventListener("keydown", keyPressHandler);
     return () => {
-      document.removeEventListener('keydown', keyPressHandler);
+      document.removeEventListener("keydown", keyPressHandler);
     };
   }, [moves]);
 
@@ -56,7 +56,10 @@ export default function Player(props) {
     );
   } else {
     return (
-      <div className="hero-hand">You {playerPoints === 60 ? "drew" : playerPoints < 60 ? "lost" : "won"} the game with {playerPoints} / 120 pts</div>
+      <div className="hero-hand">
+        You {playerPoints === 60 ? "drew " : playerPoints < 60 ? "lost " : "won "}
+        the game with {playerPoints} / 120 pts
+      </div>
     );
   }
 }

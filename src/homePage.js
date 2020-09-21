@@ -53,6 +53,15 @@ class HomePage extends Component {
               >
                   <p>Join game</p>
               </div>
+              <div
+                className="menu-button"
+                id="help"
+                onClick={() => {
+                  history.push("/help");
+                }}
+              >
+                  <p>Help</p>
+              </div>
           </>
         }
       />
