@@ -60,7 +60,7 @@ export const Briscola = {
       console.log("Player_0 finished the game with " + p0points + " points.");
       console.log("Player_1 finished the game with " + p1points + " points.");
     }
-    // tu das return in kar hoces, da je na koncu igre dosegljivo v ctx.gameover
+    //Return something and have it available in 'ctx.gameover'.
   },
 };
 
@@ -84,8 +84,6 @@ function prepareGame() {
     winner: 0,
     loser: 1,
     middle: [],
-
-    //experimental
     previousRound: []
   };
 }
@@ -104,10 +102,8 @@ function evaluate(G) {
   let p1 = G.player_1.played;
   let p0picked = G.player_0.picked;
   let p1picked = G.player_1.picked;
-
-    // experimetal
-    G.previousRound[0] = G["player_" + G.winner].played;
-    G.previousRound[1] = G["player_" + G.loser].played;
+  G.previousRound[0] = G["player_" + G.winner].played;
+  G.previousRound[1] = G["player_" + G.loser].played;
 
   if (p0.suit === p1.suit) {
     if (p0.strength > p1.strength) {
