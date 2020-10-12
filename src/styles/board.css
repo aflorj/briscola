@@ -1,58 +1,75 @@
 .board {
-    display: grid;
+  display: grid;
 }
 
 .board {
-    display: inline-grid;
-    grid-template-columns: [left-edge] 2fr [line2] 1fr [line3] 1fr [right-edge];
-    grid-template-rows: [top-edge] 1fr [line2] 1fr [line3] 1fr [bottom-edge];
-    grid-template-areas:
-    "oponent-hand oponent-hand oponent-hand"
+  display: inline-grid;
+  grid-template-columns: [left-edge] 2fr [line2] 1fr [line3] 1fr [right-edge];
+  grid-template-rows: [top-edge] 1fr [line2] 1fr [line3] 1fr [bottom-edge];
+  grid-template-areas:
+    "villain-hand villain-hand villain-hand"
     "battleground battleground community-cards"
     "hero-hand hero-hand hero-hand";
-    justify-items: center;
-    height: 100%;
-    width: 100%;
+  justify-items: center;
+  height: 100%;
+  width: 100%;
 }
 
-.oponent-hand {
-    grid-area: oponent-hand;
-    margin-top: -24vh;
+.villain-hand {
+  grid-area: villain-hand;
+  margin-top: -24vh;
 }
 
 .battleground {
-    grid-area: battleground;
+  grid-area: battleground;
 }
 
 .community-cards {
-    grid-area: community-cards;
-    padding-bottom: 3vh;
+  grid-area: community-cards;
+  padding-bottom: 3vh;
 }
 
 .hero-hand {
-    grid-area: hero-hand;
-    display: flex;
-    font-size: 40px;
+  grid-area: hero-hand;
+  display: flex;
+  font-size: 40px;
 }
 
 .playing-card {
-    max-height: 38vh;
+  max-height: 38vh;
 }
 
 .card-wrapper {
-    display: inline-block;
+  display: inline-block;
 }
 
 #villain-turn > img {
-    position: fixed;
-    top: 15vh;
-    left: 2vh;
-    height: 5vh;
+  position: fixed;
+  top: 15vh;
+  left: 2vh;
+  height: 5vh;
 }
 
-#hero-turn > img{
-    position: fixed;
-    left: 2vh;
-    bottom: 15vh;
-    height: 5vh;
+#hero-turn > img {
+  position: fixed;
+  left: 2vh;
+  bottom: 15vh;
+  height: 5vh;
+}
+
+button {
+  font-family: "Cairo", Georgia, sans-serif;
+  background-color: #ffffff;
+  font-size: 20px;
+  margin: 8px;
+  cursor: pointer;
+  display: inline-block;
+  white-space: normal;
+  outline: none;
+  box-shadow: 0px 4px 4px 0px #616161;
+  border-radius: 8px;
+}
+
+.villain-hand-button {
+  max-height: 200px;
 }
