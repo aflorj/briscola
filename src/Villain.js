@@ -5,7 +5,7 @@ import RematchLobby from "./rematchLobby.js";
 
 export default function Villain(props) {
   const [showRematchLobby, setRematchLobby] = useState(false);
-  const nextRoomID = [props.gameData.gameID, props.gameData.playerID, props.gameData.credentials];
+  const playAgainPayload = [props.gameData.matchID, props.gameData.playerID, props.gameData.credentials];
   let backside = "/images/backside.png";
   let hero = props.handID;
   let p0cards = props.gameData.G.player_0.cards;
@@ -51,7 +51,7 @@ export default function Villain(props) {
       <>
         <div className="villain-hand-button">
           {showRematchLobby ?
-          <RematchLobby nextRoomID={nextRoomID}/> :
+          <RematchLobby playAgainPayload={playAgainPayload}/> :
           <button onClick={() => { setRematchLobby(true) }}>Play again</button>
           }
         </div>

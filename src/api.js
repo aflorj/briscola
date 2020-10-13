@@ -14,34 +14,34 @@ export class LobbyAPI {
     const data = await this.api
       .post("create", { numPlayers: numPlayers })
       .json();
-    return data.gameID;
+    return data.matchID;
   }
-  async joinRoom(roomID, username, userid) {
+  async joinRoom(matchID, username, userid) {
     const payload = { playerID: userid, playerName: username };
     const data = await this.api
-      .post(roomID + "/join", { json: payload })
+      .post(matchID + "/join", { json: payload })
       .json();
     const { playerCredentials } = data;
     return playerCredentials;
   }
-  async leaveRoom(roomID, userid, playerCredentials) {
+  async leaveRoom(matchID, userid, playerCredentials) {
     const payload = { playerID: userid, credentials: playerCredentials };
     try {
-      await this.api.post(roomID + "/leave", { json: payload }).json();
+      await this.api.post(matchID + "/leave", { json: payload }).json();
     } catch (error) {
       console.log("error in leaveRoom: ", error);
     }
   }
-  async whosInRoom(roomID) {
-    const data = await this.api.get(roomID).json();
+  async whosInRoom(matchID) {
+    const data = await this.api.get(matchID).json();
     return data.players;
   }
-  async playAgain(roomID, userid, playerCredentials) {
+  async playAgain(matchID, userid, playerCredentials) {
     const payload = { playerID: userid, credentials: playerCredentials };
     const data = await this.api
-    .post(roomID + "/playAgain", { json: payload })
+    .post(matchID + "/playAgain", { json: payload })
     .json();
-    const {nextRoomID} = data;
-    return nextRoomID;
+    const {nextMatchID} = data;
+    return nextMatchID;
   }
 }

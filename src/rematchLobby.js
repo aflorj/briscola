@@ -48,12 +48,12 @@ class RematchLobby extends Component {
     window.removeEventListener("beforeunload", this.cleanup.bind(this));
   }
   playAgain = () => {
-    api.playAgain(...this.props.nextRoomID).then((value) => {
+    api.playAgain(...this.props.playAgainPayload).then((value) => {
       this.setState({ id: value }, () => {
         this.checkRoomStateAndJoin();
       });
       console.log(
-        "Promise returned value which will become the new room ID: " + value
+        "Promise returned value which will become the new match ID: " + value
       );
     });
   };
@@ -139,7 +139,7 @@ class RematchLobby extends Component {
   getGameClient = () => {
     return (
       <GameClient
-        gameID={this.state.id}
+        matchID={this.state.id}
         players={this.state.joined}
         playerID={String(this.state.myID)}
         credentials={this.state.userAuthToken}
