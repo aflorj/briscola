@@ -107,18 +107,15 @@ function evaluate(G) {
 
   if (p0.suit === p1.suit) {
     if (p0.strength > p1.strength) {
-      console.log(
-        "Both played cards have the same suit. P0 takes the round due to the higher strength of his card."
-      );
+      // Scenario 1: Both cards are the same suit. Player 0 wins the trick because his card has higher strength.
       p0picked.push(p0);
       p0picked.push(p1);
       G.winner = 0;
       G.loser = 1;
       G.evaluated = true;
     } else {
-      console.log(
-        "Both played cards have the same suit. P1 takes the round due to the higher strength of his card."
-      );
+      // Scenario 1: Both cards are the same suit. We compare strengths of the cards to determine a winner of the trick
+      // Player 1 wins the trick because his card is stronger
       p1picked.push(p0);
       p1picked.push(p1);
       G.winner = 1;
@@ -126,23 +123,24 @@ function evaluate(G) {
       G.evaluated = true;
     }
   } else if (briscola.suit === p0.suit && briscola.suit !== p1.suit) {
-    console.log("P0 won the round by playing a bricola card.");
+    // Scenardio 2: Only one of the players player a briscola card.
+    // Player 0 wins the trick by playing a briscola card
     p0picked.push(p0);
     p0picked.push(p1);
     G.winner = 0;
     G.loser = 1;
     G.evaluated = true;
   } else if (briscola.suit !== p0.suit && briscola.suit === p1.suit) {
-    console.log("P1 won the round by playing a bricola card.");
+    // Scenardio 2: Only one of the players player a briscola card
+    // Player 1 wins the trick by playing a briscola card
     p1picked.push(p0);
     p1picked.push(p1);
     G.winner = 1;
     G.loser = 0;
     G.evaluated = true;
   } else {
-    console.log(
-      "Neither of the played cards are a briscola card and the cards are not of the same suit. Winner of the last round wins the round."
-    );
+    // Scenario 3: No briscola card was played by either player and the played cards are not the same suit
+    // Player who played the first card wins the trick
     let winnerOfLastRound = "player_" + G.winner;
     G[winnerOfLastRound].picked.push(p0);
     G[winnerOfLastRound].picked.push(p1);
@@ -151,13 +149,11 @@ function evaluate(G) {
 }
 
 function cleanup(G) {
+  // Middle of the board is cleared and both cards are moved to the winner's pocket.
   G.player_0.played = null;
   G.player_1.played = null;
   G.middle = [];
   G.evaluated = false;
-  console.log(
-    "Cards were moved from 'played' to the winner's 'picked' array and a cleanup was performed."
-  );
   let prvoKarto = "player_" + G.winner;
   let drugoKarto = "player_" + G.loser;
   if (G.deckOnBoard.length > 1) {
@@ -167,20 +163,12 @@ function cleanup(G) {
     G[drugoKarto].cards.push(
       G.deckOnBoard.splice(G.deckOnBoard.length - 1, 1)[0]
     );
-    console.log(
-      "Both players received a new card from the deck. Entering a new round."
-    );
+    // Both players received a new card from the deck. Entering a new round.
   } else if (G.deckOnBoard.length === 1) {
     G[prvoKarto].cards.push(
       G.deckOnBoard.splice(G.deckOnBoard.length - 1, 1)[0]
     );
     G[drugoKarto].cards.push(G.briscola);
-    console.log(
-      "The last card from the deck has been delt so briscola card goes to the loser of the last round. Entering a new round."
-    );
-  } else {
-    console.log(
-      "The deck is empty - No more cards to deal. Entering a new round."
-    );
+    // The last card from the deck has been delt so briscola card goes to the loser of the last round. Entering a new round.
   }
 }

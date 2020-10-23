@@ -35,8 +35,7 @@ export default function Player(props) {
     return (
       <>
         <div className="hero-hand">
-          {transitions.map((x, index, props) => {
-            return (
+          {transitions.map((x, index, props) => (
               <div className="card-wrapper">
                 <animated.img
                   className="playing-card"
@@ -49,8 +48,7 @@ export default function Player(props) {
                   }}
                 />
               </div>
-            );
-          })}
+          ))}
         </div>
       </>
     );
@@ -58,7 +56,7 @@ export default function Player(props) {
     return (
       <div className="hero-hand">
         You {playerPoints === 60 ? "drew " : playerPoints < 60 ? "lost " : "won "}
-        the game by collecting {playerPoints} out of possible 120 points.
+        the game by scoring {playerPoints} out of possible 120 points.
       </div>
     );
   }

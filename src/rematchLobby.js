@@ -9,9 +9,6 @@ import Board from "./Board.js";
 import TemplatePage from "./templatePage.js";
 import { GAME_SERVER_URL, APP_PRODUCTION } from "./config.js";
 
-// TODO
-// Switch player IDs every rematch to move the "dealer" position every game.
-
 const api = new LobbyAPI();
 const server = APP_PRODUCTION
   ? `https://${window.location.hostname}`
@@ -48,7 +45,7 @@ class RematchLobby extends Component {
     window.removeEventListener("beforeunload", this.cleanup.bind(this));
   }
   playAgain = () => {
-    api.playAgain(...this.props.playAgainPayload).then((value) => {
+    api.playAgain(...this.props.location.playAgainPayload).then((value) => {
       this.setState({ id: value }, () => {
         this.checkRoomStateAndJoin();
       });
@@ -81,7 +78,7 @@ class RematchLobby extends Component {
             joined: joinedPlayers,
           });
           console.log(joinedPlayers);
-          const myPlayerNum = joinedPlayers.length;
+          const myPlayerNum = this.props.location.newPlayerID;
           this.joinRoom(myPlayerNum);
         },
         (error) => {

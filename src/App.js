@@ -9,6 +9,7 @@ import { SocketIO } from 'boardgame.io/multiplayer';
 import HomePage from "./homePage.js";
 import JoinPage from "./joinPage.js";
 import HelpPage from "./helpPage.js";
+import RematchLobby from "./rematchLobby";
 
 function App() {
   const history = useHistory();
@@ -40,7 +41,8 @@ function App() {
         exact
         render={(props) => <HelpPage {...props} history={history} />}
       />
-      <Route path="/play" exact render={(props) => renderBriscolaClient()} />
+      <Route path="/demo" exact render={() => renderBriscolaClient()} />
+      <Route path="/rematch" render={(props) => <RematchLobby {...props} key={Math.random()}/>} />
       <Route path="/lobby/:id" component={Lobby} />
       <Route
         path="*"

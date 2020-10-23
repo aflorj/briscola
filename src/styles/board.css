@@ -39,10 +39,6 @@
   max-height: 38vh;
 }
 
-.card-wrapper {
-  display: inline-block;
-}
-
 #villain-turn > img {
   position: fixed;
   top: 15vh;

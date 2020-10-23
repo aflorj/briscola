@@ -1,17 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import { useTransition, animated } from "react-spring";
-import RematchLobby from "./rematchLobby.js";
-
+import { Link } from 'react-router-dom';
 
 export default function Villain(props) {
-  const [showRematchLobby, setRematchLobby] = useState(false);
   const playAgainPayload = [props.gameData.matchID, props.gameData.playerID, props.gameData.credentials];
   let backside = "/images/backside.png";
   let hero = props.handID;
+  let villainID = !(parseFloat(hero))? 1 : 0;
   let p0cards = props.gameData.G.player_0.cards;
   let p1cards = props.gameData.G.player_1.cards;
 
-  function findVillain(heroID) {
+  function findVillainHand(heroID) {
     if (heroID === "0") {
       return p1cards;
     } else {
@@ -19,7 +18,7 @@ export default function Villain(props) {
     }
   }
 
-  const villainCardsToRender = findVillain(hero);
+  const villainCardsToRender = findVillainHand(hero);
   const villainTransitions = useTransition(
     villainCardsToRender,
     (item) => item.alt,
@@ -34,7 +33,7 @@ export default function Villain(props) {
     return (
       <>
         <div className="villain-hand">
-          {villainTransitions.map((x, index, props) => (
+          {villainTransitions.map((x, index) => (
             <animated.img
               className="playing-card"
               src={backside}
@@ -48,14 +47,13 @@ export default function Villain(props) {
     );
   } else {
     return (
-      <>
-        <div className="villain-hand-button">
-          {showRematchLobby ?
-          <RematchLobby playAgainPayload={playAgainPayload}/> :
-          <button onClick={() => { setRematchLobby(true) }}>Play again</button>
-          }
+      <div className="villain-hand-button">
+      <Link to={{
+        pathname: "/rematch/",
+        playAgainPayload: playAgainPayload,
+        newPlayerID: villainID,
+      }}>Click here for rematch</Link>
         </div>
-      </>
     );
   }
 }

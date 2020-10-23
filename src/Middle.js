@@ -33,6 +33,7 @@ export default function Middle(props) {
     }
 
     return () => clearTimeout(timer);
+    // eslint-disable-next-line
   }, [props.gameData.G.middle])
   
   const transitions = useTransition(
