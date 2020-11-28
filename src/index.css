@@ -12,4 +12,12 @@ html, body, #root, .bgio-client {
     height: 100%;
   }
 
+  img {
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+  }
+
   /* #4b7554 */

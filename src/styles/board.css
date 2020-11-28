@@ -17,16 +17,29 @@
 
 .villain-hand {
   grid-area: villain-hand;
-  margin-top: -24vh;
+  display: flex;
+  margin-top: -27vh;
 }
 
 .battleground {
   grid-area: battleground;
+  margin-left: 300px;
 }
+
+/* improve ? */
+.battleground > img {
+  display: none;
+}
+
+.battleground > img:last-child, .battleground > img:nth-last-child(2){
+  display: inline;
+}
+/**/
 
 .community-cards {
   grid-area: community-cards;
   padding-bottom: 3vh;
+  position: relative;
 }
 
 .hero-hand {
@@ -35,18 +48,36 @@
   font-size: 40px;
 }
 
-.playing-card {
+/* playing cards*/
+
+.hero-playing-card {
   max-height: 38vh;
+  filter: drop-shadow(40px -30px 4px rgb(0, 0, 0, 0.4));
 }
 
-#villain-turn > img {
+.villain-playing-card {
+  max-height: 38vh;
+  filter: drop-shadow(40px -30px 4px rgb(0, 0, 0, 0.4));
+}
+
+.briscola-playing-card {
+  max-height: 35vh;
+  filter: drop-shadow(6px -6px 1px rgb(0, 0, 0, 0.8));
+}
+
+.middle-playing-card {
+  max-height: 35vh;
+  filter: drop-shadow(6px -4px 1px rgb(0, 0, 0, 0.8));
+ }
+
+#villain-turn img{
   position: fixed;
   top: 15vh;
   left: 2vh;
   height: 5vh;
 }
 
-#hero-turn > img {
+#hero-turn img {
   position: fixed;
   left: 2vh;
   bottom: 15vh;
@@ -55,7 +86,7 @@
 
 button {
   font-family: "Cairo", Georgia, sans-serif;
-  background-color: #ffffff;
+/*   background-color: #ffffff;
   font-size: 20px;
   margin: 8px;
   cursor: pointer;
@@ -63,9 +94,80 @@ button {
   white-space: normal;
   outline: none;
   box-shadow: 0px 4px 4px 0px #616161;
-  border-radius: 8px;
+  border-radius: 8px; */
 }
 
 .villain-hand-button {
   max-height: 200px;
+  grid-area: villain-hand;
+  display: flex;
+  margin-top: 200px;
+}
+
+/* hero */
+/* 1 ali 3 karte */
+
+#hero-other-cards div:nth-child(1) {
+  transform: rotate(-9deg) translateX(25px);
+}
+
+#hero-other-cards div:nth-child(3) {
+  transform: rotate(9deg) translateX(-25px);
+}
+
+#hero-other-cards div:nth-child(2) {
+  transform: translateY(-25px);
+}
+#hero-other-cards div:only-of-type {
+  transform: rotate(0deg);
+}
+
+/* 2 karti */
+
+#hero-two-cards div:first-child {
+  transform: rotate(-9deg) translateX(12px);
+}
+
+#hero-two-cards div:last-child {
+  transform: rotate(9deg) translateX(-12px);
+}
+
+/* villain */
+/* 1 ali 3 karte */
+
+#villain-other-cards div:nth-child(1) {
+  transform: rotate(-9deg) translateX(25px);
+}
+
+#villain-other-cards div:nth-child(3) {
+  transform: rotate(9deg) translateX(-25px);
+}
+
+#villain-other-cards div:nth-child(2) {
+  transform: translateY(-25px);
+}
+#villain-other-cards div:only-of-type {
+  transform: rotate(0deg);
+}
+
+/* 2 karti */
+
+#villain-two-cards div:first-child {
+  transform: rotate(-9deg) translateX(12px);
+}
+
+#villain-two-cards div:last-child {
+  transform: rotate(9deg) translateX(-12px);
+}
+
+/* extra card from the deck */
+
+#wrapped-card-3, #villain-wrapped-card-3 {
+  transform: translateX(150px);
+}
+
+.deck-card {/* trenutno nimamo */
+  position: absolute;
+  top: 120px;
+  left: 0px;
 }

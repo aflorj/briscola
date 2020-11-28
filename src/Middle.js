@@ -48,7 +48,7 @@ export default function Middle(props) {
         {transitions.map((x) => {
           return (
             <animated.img
-              className="playing-card"
+              className={`middle-playing-card ${currentTarget}`}
               src={x.item.imagePath}
               alt={x.item.alt}
               key={x.item.alt}

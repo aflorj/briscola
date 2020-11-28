@@ -56,11 +56,11 @@ export const Briscola = {
       p1bounty.forEach((card) => {
         p1points += card.points;
       });
+      ctx.events.endGame(); //Return something and have it available in 'ctx.gameover'.
       console.log("The game has concluded with the following result:");
       console.log("Player_0 finished the game with " + p0points + " points.");
       console.log("Player_1 finished the game with " + p1points + " points.");
     }
-    //Return something and have it available in 'ctx.gameover'.
   },
 };
 

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useTransition, animated } from "react-spring";
 
 export default function Player(props) {
-  let moves = props.gameData.moves;
+  const moves = props.gameData.moves;
 
   useEffect(() => {
     const keyPressHandler = (e) => {
@@ -18,14 +18,14 @@ export default function Player(props) {
     };
   }, [moves]);
 
-  let cardsToRender = props.gameData.G["player_" + props.handID].cards;
+  const cardsToRender = props.gameData.G["player_" + (props.handID || "0")].cards;
   const transitions = useTransition(cardsToRender, (item) => item.alt, {
     from: { opacity: 0, transform: "translate3d(100px, 0px, 0)" },
     enter: { opacity: 1, transform: "translate3d(0, 0px, 0)" },
     leave: { opacity: 0.5, transform: "tranlate3d(0, -30px, 0)" },
   });
 
-  const playerBounty = props.gameData.G["player_" + props.handID].picked;
+  const playerBounty = props.gameData.G["player_" + (props.handID || "0")].picked;
   let playerPoints = 0;
   playerBounty.forEach((card) => {
     playerPoints += card.points;
@@ -34,11 +34,11 @@ export default function Player(props) {
   if (props.gameData.ctx.turn < 41) {
     return (
       <>
-        <div className="hero-hand">
+        <div className="hero-hand" id={cardsToRender.length === 2 ? "hero-two-cards" : "hero-other-cards"}>
           {transitions.map((x, index, props) => (
-              <div className="card-wrapper">
+              <div className="card-wrapper" id={"wrapped-card-" + index}>
                 <animated.img
-                  className="playing-card"
+                  className="hero-playing-card"
                   src={x.item.imagePath}
                   alt={x.item.alt}
                   key={x.item.alt}

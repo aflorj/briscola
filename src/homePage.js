@@ -36,15 +36,15 @@ class HomePage extends Component {
     return (
       <TemplatePage
         content={
-          <>
-              <div
+          <div id="menu-button-wrapper">
+              <button
                 className="menu-button"
                 id="new-game"
                 onClick={() => this.createGame()}
               >
                   <p>New game</p>
-              </div>
-              <div
+              </button>
+              <button
                 className="menu-button"
                 id="join-game"
                 onClick={() => {
@@ -52,8 +52,8 @@ class HomePage extends Component {
                 }}
               >
                   <p>Join game</p>
-              </div>
-              <div
+              </button>
+              <button
                 className="menu-button"
                 id="help"
                 onClick={() => {
@@ -61,8 +61,8 @@ class HomePage extends Component {
                 }}
               >
                   <p>Help</p>
-              </div>
-          </>
+              </button>
+          </div>
         }
       />
     );

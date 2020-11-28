@@ -1,11 +1,8 @@
-.menu-button {
-    cursor: pointer;
-}
-
-.menu-button:hover {
-    color: #ffffff;
+#menu-button-wrapper {
+    padding-top: 50px;
 }
 
 p {
     font-size: 35px;
+    margin: 10px;
 }

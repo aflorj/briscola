@@ -6,14 +6,93 @@
 
 .logo {
     display: inline-block;
+    filter: drop-shadow(20px 30px 5px rgb(0, 0, 0, 0.5));
 }
 
 .logo > img {
     margin-top: 15%;
     max-width: 300px;
     padding-bottom: 10px;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
 
 h2 {
     font-size: 2em;
+}
+
+.lang {
+    position: absolute;
+    top: 20px;
+    right: 50px;
+    display: flex;
+}
+
+.lang-button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    opacity: 0.6;   /* in potem 1.0 hover in selected, selected se underline*/
+}
+
+.lang-button:hover {
+    opacity: 1;
+}
+
+.menu-button {
+    cursor: pointer;
+    outline: none;
+    margin: 10px;
+    border-radius: 20px;
+/*     rocno izber barvo - more bit svetlejsa od gumba
+ */    box-shadow: inset 0 1px 0 hsla(224,84%,74%), 0 1px 3px hsla(0, 0%, 0%, .2);
+}
+
+.menu-button:active {
+    box-shadow: none;
+}
+
+.menu-button:hover {
+    color: grey;
+}
+
+#join-game-button > p {
+    margin: 5px;
+    font-size: 22px;
+}
+
+.help-frame {
+    padding: 50px 6% 100px;
+}
+
+.help-text {
+    text-align: left;
+    font-size: 24px;
+}
+
+#help-cards-gallery {
+    margin: 20px 3%;
+}
+
+.gallery-card {
+    width: 8%;
+    margin: 0 2px;
+}
+
+.gallery-card-9 {
+    position: relative;
+}
+
+.points-text {
+    position: absolute;
+    right: 0;
+    top: 0;
 }

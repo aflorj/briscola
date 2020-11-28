@@ -2,10 +2,9 @@ import React from 'react';
 import { Switch, Route, useHistory } from 'react-router';
 import Lobby from './lobby.js';
 import { Client } from 'boardgame.io/react';
-import { APP_PRODUCTION, GAME_SERVER_URL } from "./config.js";
 import { Briscola } from './GameLogic.js';
 import Board from './Board.js';
-import { SocketIO } from 'boardgame.io/multiplayer';
+import { Local } from 'boardgame.io/multiplayer';
 import HomePage from "./homePage.js";
 import JoinPage from "./joinPage.js";
 import HelpPage from "./helpPage.js";
@@ -13,13 +12,10 @@ import RematchLobby from "./rematchLobby";
 
 function App() {
   const history = useHistory();
-  const server = APP_PRODUCTION
-    ? `https://${window.location.hostname}`
-    : GAME_SERVER_URL;
   const BriscolaClient = Client({
     game: Briscola,
     board: Board,
-    multiplayer: SocketIO({ server: server }),
+    multiplayer: Local(),
   });
   const renderBriscolaClient = () => {
     return <BriscolaClient playerID="0"></BriscolaClient>;

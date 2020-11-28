@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 export default function Villain(props) {
   const playAgainPayload = [props.gameData.matchID, props.gameData.playerID, props.gameData.credentials];
-  let backside = "/images/backside.png";
+  const backside = "/images/backside.png";
   let hero = props.handID;
   let villainID = !(parseFloat(hero))? 1 : 0;
   let p0cards = props.gameData.G.player_0.cards;
@@ -32,15 +32,17 @@ export default function Villain(props) {
   if (props.gameData.ctx.turn < 41) {
     return (
       <>
-        <div className="villain-hand">
+        <div className="villain-hand" id={villainCardsToRender.length === 2 ? "villain-two-cards" : "villain-other-cards"}>
           {villainTransitions.map((x, index) => (
+            <div className="villain-card-wrapper" id={"villain-wrapped-card-" + index}>
             <animated.img
-              className="playing-card"
+              className="villain-playing-card"
               src={backside}
-              alt={"backside"}
+              alt="backside"
               key={index}
               style={x.props}
             />
+            </div>
           ))}
         </div>
       </>
@@ -52,7 +54,11 @@ export default function Villain(props) {
         pathname: "/rematch/",
         playAgainPayload: playAgainPayload,
         newPlayerID: villainID,
-      }}>Click here for rematch</Link>
+      }}>
+      <button className="menu-button">
+      Rematch!
+      </button>
+      </Link>
         </div>
     );
   }

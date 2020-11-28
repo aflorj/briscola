@@ -29,11 +29,12 @@ class JoinPage extends Component {
                 onChange={this.handleChange}
               />
               <br />
-              <input
-                type="submit"
-                value="Join"
-                className="submit-code"
-              />
+              <button
+                id="join-game-button"
+                className="menu-button"
+              >
+              <p>Join</p>
+              </button>
             </form>
           </>
         }

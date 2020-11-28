@@ -9,7 +9,7 @@ class TemplatePage extends Component {
       <div className="full_height">
         <Link to="/" style={{ textDecoration: "none" }}>
         <div className="logo">
-        <img src={'/images/briscolaLogoTransparent.png'} alt={'briscola-logo'}/>
+        <img src={'/images/briscolaLogoTransparentColor.png'} alt={'briscola-logo'}/>
         </div>
         </Link>
         {this.props.content}
@@ -18,9 +18,15 @@ class TemplatePage extends Component {
           target={"_blank"}
           bannerColor="#ffffff"
           octoColor="#000000"
-          size={85}
-          direction="right"
+          size={70}
+          direction="left"
         />
+        <div className="lang">
+          {/* .map cez jezike, namesto hard-coded */}
+          <button className="lang-button">si</button>
+          <button className="lang-button">en</button>
+          <button className="lang-button">it</button>
+        </div>
       </div>
     );
   }
