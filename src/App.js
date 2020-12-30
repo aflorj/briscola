@@ -8,6 +8,7 @@ import { Local } from 'boardgame.io/multiplayer';
 import HomePage from './HomePage.js';
 import JoinPage from './JoinPage.js';
 import RematchLobby from './RematchLobby.js';
+import { Debug } from 'boardgame.io/debug';
 
 function App() {
   const history = useHistory();
@@ -15,6 +16,7 @@ function App() {
     game: Briscola,
     board: Board,
     multiplayer: Local(),
+    debug: { impl: Debug },
   });
   const renderBriscolaClient = () => {
     return <BriscolaClient playerID="0" demo="true"></BriscolaClient>;
