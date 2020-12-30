@@ -1,5 +1,5 @@
-import { GAME_NAME, GAME_SERVER_URL, APP_PRODUCTION } from "./config.js";
-import ky from "ky";
+import { GAME_NAME, GAME_SERVER_URL, APP_PRODUCTION } from './config.js';
+import ky from 'ky';
 const server = APP_PRODUCTION
   ? `https://${window.location.hostname}`
   : GAME_SERVER_URL;

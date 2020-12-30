@@ -1,11 +1,7 @@
-// https://en.wikipedia.org/wiki/Briscola
-// Italian 40-card deck: 10x of: denari (coins), spade (swords), coppe (cups), bastoni (batons)
-// Face cards: fante (knave), cavallo (knight), re (king)
-
-// COINS
+// Coins
 
 const twoOfCoins = {
-  suit: "coins",
+  suit: "Coins",
   strength: 1,
   points: 0,
   imagePath: "/images/twoOfCoins.png",
@@ -13,7 +9,7 @@ const twoOfCoins = {
 };
 
 const fourOfCoins = {
-  suit: "coins",
+  suit: "Coins",
   strength: 2,
   points: 0,
   imagePath: "/images/fourOfCoins.png",
@@ -21,7 +17,7 @@ const fourOfCoins = {
 };
 
 const fiveOfCoins = {
-  suit: "coins",
+  suit: "Coins",
   strength: 3,
   points: 0,
   imagePath: "/images/fiveOfCoins.png",
@@ -29,7 +25,7 @@ const fiveOfCoins = {
 };
 
 const sixOfCoins = {
-  suit: "coins",
+  suit: "Coins",
   strength: 4,
   points: 0,
   imagePath: "/images/sixOfCoins.png",
@@ -37,7 +33,7 @@ const sixOfCoins = {
 };
 
 const sevenOfCoins = {
-  suit: "coins",
+  suit: "Coins",
   strength: 5,
   points: 0,
   imagePath: "/images/sevenOfCoins.png",
@@ -45,7 +41,7 @@ const sevenOfCoins = {
 };
 
 const knaveOfCoins = {
-  suit: "coins",
+  suit: "Coins",
   strength: 6,
   points: 2,
   imagePath: "/images/knaveOfCoins.png",
@@ -53,7 +49,7 @@ const knaveOfCoins = {
 };
 
 const knightOfCoins = {
-  suit: "coins",
+  suit: "Coins",
   strength: 7,
   points: 3,
   imagePath: "/images/knightOfCoins.png",
@@ -61,7 +57,7 @@ const knightOfCoins = {
 };
 
 const kingOfCoins = {
-  suit: "coins",
+  suit: "Coins",
   strength: 8,
   points: 4,
   imagePath: "/images/kingOfCoins.png",
@@ -69,7 +65,7 @@ const kingOfCoins = {
 };
 
 const threeOfCoins = {
-  suit: "coins",
+  suit: "Coins",
   strength: 9,
   points: 10,
   imagePath: "/images/threeOfCoins.png",
@@ -77,17 +73,17 @@ const threeOfCoins = {
 };
 
 const aceOfCoins = {
-  suit: "coins",
+  suit: "Coins",
   strength: 10,
   points: 11,
   imagePath: "/images/aceOfCoins.png",
   alt: "Ace of Coins",
 };
 
-// SWORDS
+// Swords
 
 const twoOfSwords = {
-  suit: "swords",
+  suit: "Swords",
   strength: 1,
   points: 0,
   imagePath: "/images/twoOfSwords.png",
@@ -95,7 +91,7 @@ const twoOfSwords = {
 };
 
 const fourOfSwords = {
-  suit: "swords",
+  suit: "Swords",
   strength: 2,
   points: 0,
   imagePath: "/images/fourOfSwords.png",
@@ -103,7 +99,7 @@ const fourOfSwords = {
 };
 
 const fiveOfSwords = {
-  suit: "swords",
+  suit: "Swords",
   strength: 3,
   points: 0,
   imagePath: "/images/fiveOfSwords.png",
@@ -111,7 +107,7 @@ const fiveOfSwords = {
 };
 
 const sixOfSwords = {
-  suit: "swords",
+  suit: "Swords",
   strength: 4,
   points: 0,
   imagePath: "/images/sixOfSwords.png",
@@ -119,7 +115,7 @@ const sixOfSwords = {
 };
 
 const sevenOfSwords = {
-  suit: "swords",
+  suit: "Swords",
   strength: 5,
   points: 0,
   imagePath: "/images/sevenOfSwords.png",
@@ -127,7 +123,7 @@ const sevenOfSwords = {
 };
 
 const knaveOfSwords = {
-  suit: "swords",
+  suit: "Swords",
   strength: 6,
   points: 2,
   imagePath: "/images/knaveOfSwords.png",
@@ -135,7 +131,7 @@ const knaveOfSwords = {
 };
 
 const knightOfSwords = {
-  suit: "swords",
+  suit: "Swords",
   strength: 7,
   points: 3,
   imagePath: "/images/knightOfSwords.png",
@@ -143,7 +139,7 @@ const knightOfSwords = {
 };
 
 const kingOfSwords = {
-  suit: "swords",
+  suit: "Swords",
   strength: 8,
   points: 4,
   imagePath: "/images/kingOfSwords.png",
@@ -151,7 +147,7 @@ const kingOfSwords = {
 };
 
 const threeOfSwords = {
-  suit: "swords",
+  suit: "Swords",
   strength: 9,
   points: 10,
   imagePath: "/images/threeOfSwords.png",
@@ -159,17 +155,17 @@ const threeOfSwords = {
 };
 
 const aceOfSwords = {
-  suit: "swords",
+  suit: "Swords",
   strength: 10,
   points: 11,
   imagePath: "/images/aceOfSwords.png",
   alt: "Ace of Swords",
 };
 
-// CUPS
+// Cups
 
 const twoOfCups = {
-  suit: "cups",
+  suit: "Cups",
   strength: 1,
   points: 0,
   imagePath: "/images/twoOfCups.png",
@@ -177,7 +173,7 @@ const twoOfCups = {
 };
 
 const fourOfCups = {
-  suit: "cups",
+  suit: "Cups",
   strength: 2,
   points: 0,
   imagePath: "/images/fourOfCups.png",
@@ -185,7 +181,7 @@ const fourOfCups = {
 };
 
 const fiveOfCups = {
-  suit: "cups",
+  suit: "Cups",
   strength: 3,
   points: 0,
   imagePath: "/images/fiveOfCups.png",
@@ -193,7 +189,7 @@ const fiveOfCups = {
 };
 
 const sixOfCups = {
-  suit: "cups",
+  suit: "Cups",
   strength: 4,
   points: 0,
   imagePath: "/images/sixOfCups.png",
@@ -201,7 +197,7 @@ const sixOfCups = {
 };
 
 const sevenOfCups = {
-  suit: "cups",
+  suit: "Cups",
   strength: 5,
   points: 0,
   imagePath: "/images/sevenOfCups.png",
@@ -209,7 +205,7 @@ const sevenOfCups = {
 };
 
 const knaveOfCups = {
-  suit: "cups",
+  suit: "Cups",
   strength: 6,
   points: 2,
   imagePath: "/images/knaveOfCups.png",
@@ -217,7 +213,7 @@ const knaveOfCups = {
 };
 
 const knightOfCups = {
-  suit: "cups",
+  suit: "Cups",
   strength: 7,
   points: 3,
   imagePath: "/images/knightOfCups.png",
@@ -225,7 +221,7 @@ const knightOfCups = {
 };
 
 const kingOfCups = {
-  suit: "cups",
+  suit: "Cups",
   strength: 8,
   points: 4,
   imagePath: "/images/kingOfCups.png",
@@ -233,7 +229,7 @@ const kingOfCups = {
 };
 
 const threeOfCups = {
-  suit: "cups",
+  suit: "Cups",
   strength: 9,
   points: 10,
   imagePath: "/images/threeOfCups.png",
@@ -241,17 +237,17 @@ const threeOfCups = {
 };
 
 const aceOfCups = {
-  suit: "cups",
+  suit: "Cups",
   strength: 10,
   points: 11,
   imagePath: "/images/aceOfCups.png",
   alt: "Ace of Cups",
 };
 
-// BATONS
+// Batons
 
 const twoOfBatons = {
-  suit: "batons",
+  suit: "Batons",
   strength: 1,
   points: 0,
   imagePath: "/images/twoOfBatons.png",
@@ -259,7 +255,7 @@ const twoOfBatons = {
 };
 
 const fourOfBatons = {
-  suit: "batons",
+  suit: "Batons",
   strength: 2,
   points: 0,
   imagePath: "/images/fourOfBatons.png",
@@ -267,7 +263,7 @@ const fourOfBatons = {
 };
 
 const fiveOfBatons = {
-  suit: "batons",
+  suit: "Batons",
   strength: 3,
   points: 0,
   imagePath: "/images/fiveOfBatons.png",
@@ -275,7 +271,7 @@ const fiveOfBatons = {
 };
 
 const sixOfBatons = {
-  suit: "batons",
+  suit: "Batons",
   strength: 4,
   points: 0,
   imagePath: "/images/sixOfBatons.png",
@@ -283,7 +279,7 @@ const sixOfBatons = {
 };
 
 const sevenOfBatons = {
-  suit: "batons",
+  suit: "Batons",
   strength: 5,
   points: 0,
   imagePath: "/images/sevenOfBatons.png",
@@ -291,7 +287,7 @@ const sevenOfBatons = {
 };
 
 const knaveOfBatons = {
-  suit: "batons",
+  suit: "Batons",
   strength: 6,
   points: 2,
   imagePath: "/images/knaveOfBatons.png",
@@ -299,7 +295,7 @@ const knaveOfBatons = {
 };
 
 const knightOfBatons = {
-  suit: "batons",
+  suit: "Batons",
   strength: 7,
   points: 3,
   imagePath: "/images/knightOfBatons.png",
@@ -307,7 +303,7 @@ const knightOfBatons = {
 };
 
 const kingOfBatons = {
-  suit: "batons",
+  suit: "Batons",
   strength: 8,
   points: 4,
   imagePath: "/images/kingOfBatons.png",
@@ -315,7 +311,7 @@ const kingOfBatons = {
 };
 
 const threeOfBatons = {
-  suit: "batons",
+  suit: "Batons",
   strength: 9,
   points: 10,
   imagePath: "/images/threeOfBatons.png",
@@ -323,14 +319,14 @@ const threeOfBatons = {
 };
 
 const aceOfBatons = {
-  suit: "batons",
+  suit: "Batons",
   strength: 10,
   points: 11,
   imagePath: "/images/aceOfBatons.png",
   alt: "Ace of Batons",
 };
 
-// A full deck array
+// A deck
 
 const deck = [
   twoOfCoins,
@@ -375,6 +371,11 @@ const deck = [
   aceOfBatons,
 ];
 
+const denari = [twoOfCoins, fourOfCoins, fiveOfCoins, sixOfCoins, sevenOfCoins,  knaveOfCoins, knightOfCoins, kingOfCoins, threeOfCoins, aceOfCoins]
+const spade = [twoOfSwords, fourOfSwords, fiveOfSwords, sixOfSwords, sevenOfSwords,  knaveOfSwords, knightOfSwords, kingOfSwords, threeOfSwords, aceOfSwords]
+const coppe = [twoOfCups, fourOfCups, fiveOfCups, sixOfCups, sevenOfCups,  knaveOfCups, knightOfCups, kingOfCups, threeOfCups, aceOfCups]
+const bastoni = [twoOfBatons, fourOfBatons, fiveOfBatons, sixOfBatons, sevenOfBatons,  knaveOfBatons, knightOfBatons, kingOfBatons, threeOfBatons, aceOfBatons]
+
 // A shuffling function using Fisher-Yates algorithm
 
 function shuffleDeck(deck) {
@@ -387,4 +388,4 @@ function shuffleDeck(deck) {
   return deck;
 }
 
-export { deck, shuffleDeck };
+export { deck, denari, spade, coppe, bastoni, shuffleDeck };

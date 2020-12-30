@@ -1,13 +1,14 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { SocketIO } from "boardgame.io/multiplayer";
-import { Client } from "boardgame.io/react";
-import "./styles/lobby.css";
-import { LobbyAPI } from "./api.js";
-import { Briscola } from "./GameLogic.js";
-import Board from "./Board.js";
-import TemplatePage from "./templatePage.js";
-import { GAME_SERVER_URL, APP_PRODUCTION } from "./config.js";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { SocketIO } from 'boardgame.io/multiplayer';
+import { Client } from 'boardgame.io/react';
+import './styles/lobby.css';
+import { LobbyAPI } from './api.js';
+import { Briscola } from './gameLogic.js';
+import Board from './Board.js';
+import TemplatePage from './TemplatePage.js';
+import { GAME_SERVER_URL, APP_PRODUCTION } from './config.js';
+import { Trans } from 'react-i18next';
 
 const api = new LobbyAPI();
 const server = APP_PRODUCTION
@@ -25,7 +26,7 @@ class RematchLobby extends Component {
   state = {};
   constructor(props) {
     super(props);
-    console.log("Constructing rematch lobby");
+    console.log("Creating rematch lobby");
     this.state.id = null;
     this.state.joined = [];
     this.state.myID = null;
@@ -59,7 +60,7 @@ class RematchLobby extends Component {
     if (this.state.id) {
       api.joinRoom(this.state.id, username, player_no).then(
         (authToken) => {
-          console.log("Joined room as player ", player_no);
+          console.log("Joined the room. Your id is: ", player_no);
           this.setState({ myID: player_no, userAuthToken: authToken });
         },
         (error) => {
@@ -69,7 +70,7 @@ class RematchLobby extends Component {
     }
   };
   checkRoomStateAndJoin = () => {
-    console.log("Pinging room endpoint to see who's there.");
+    console.log("Checking room state.");
     if (this.state.id) {
       api.whosInRoom(this.state.id).then(
         (players) => {
@@ -82,7 +83,7 @@ class RematchLobby extends Component {
           this.joinRoom(myPlayerNum);
         },
         (error) => {
-          console.log("Room does not exist!");
+          console.log("Room does not exist.");
           this.setState({
             id: null,
           });
@@ -100,7 +101,7 @@ class RematchLobby extends Component {
           });
         },
         (error) => {
-          console.log("Room does not exist!");
+          console.log("Room does not exist.");
           this.setState({
             id: null,
           });
@@ -111,7 +112,7 @@ class RematchLobby extends Component {
   gameExistsView = () => {
     return (
       <>
-        <div>Waiting for oponent to accept the rematch.</div>
+        <div><Trans>Waiting for opponent to accept the rematch...</Trans></div>
         <div id="bars1">
           <span></span>
           <span></span>
@@ -126,9 +127,9 @@ class RematchLobby extends Component {
     return (
       <>
         <div>
-          Something went wrong while setting-up a rematch.
+          <Trans>Something went wrong while setting-up a rematch.</Trans>
           <br />
-          <Link to="/">Go back and create a new lobby.</Link>
+          <Link to="/"><Trans>Go back and create a new lobby.</Trans></Link>
         </div>
       </>
     );

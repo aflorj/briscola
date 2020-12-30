@@ -1,14 +1,13 @@
 import React from 'react';
 import { Switch, Route, useHistory } from 'react-router';
-import Lobby from './lobby.js';
+import Lobby from './Lobby.js';
 import { Client } from 'boardgame.io/react';
-import { Briscola } from './GameLogic.js';
+import { Briscola } from './gameLogic.js';
 import Board from './Board.js';
 import { Local } from 'boardgame.io/multiplayer';
-import HomePage from "./homePage.js";
-import JoinPage from "./joinPage.js";
-import HelpPage from "./helpPage.js";
-import RematchLobby from "./rematchLobby";
+import HomePage from './HomePage.js';
+import JoinPage from './JoinPage.js';
+import RematchLobby from './RematchLobby.js';
 
 function App() {
   const history = useHistory();
@@ -18,7 +17,7 @@ function App() {
     multiplayer: Local(),
   });
   const renderBriscolaClient = () => {
-    return <BriscolaClient playerID="0"></BriscolaClient>;
+    return <BriscolaClient playerID="0" demo="true"></BriscolaClient>;
   };
   return (
     <Switch>
@@ -31,11 +30,6 @@ function App() {
         path="/join"
         exact
         render={(props) => <JoinPage {...props} history={history} />}
-      />
-      <Route
-        path="/help"
-        exact
-        render={(props) => <HelpPage {...props} history={history} />}
       />
       <Route path="/demo" exact render={() => renderBriscolaClient()} />
       <Route path="/rematch" render={(props) => <RematchLobby {...props} key={Math.random()}/>} />

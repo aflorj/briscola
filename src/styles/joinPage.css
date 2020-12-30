@@ -1,33 +1,20 @@
 .game-code-window {
     font-family: 'Cairo', Georgia, sans-serif;
     text-align: center;
-    height: 50px;
-    padding: 15px;
+    height: 84px;
+    padding: 24px;
     font-size: 28px;
     border-radius: 8px;
-    margin: 8px;
+    margin: 24px;
     background-color: #ffffff;
     outline: none;
     position: relative;
-    box-shadow: 0 -2px 0 hsla(0, 0%, 100%, .15);
 }
 
 .game-code-window:focus::placeholder {
     color: transparent;
 }
 
-/* .submit-code {
-    font-family: 'Cairo', Georgia, sans-serif;
-    background-color: #ffffff;
-    font-size: 20px;
-    margin: 8px;
-    cursor: pointer;
-    display: inline-block;
-    white-space: normal;
-    outline: none;
-    border-radius: 8px;
-} */
-
-.submit-code:hover {
-    background-color: #4b7554;
-}
+.small {
+    width: 128px;
+  }  

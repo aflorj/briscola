@@ -1,4 +1,4 @@
-import { deck, shuffleDeck } from "./cards.js";
+import { deck, shuffleDeck } from './cards.js';
 
 export const Briscola = {
   name: "Briscola",
@@ -56,7 +56,7 @@ export const Briscola = {
       p1bounty.forEach((card) => {
         p1points += card.points;
       });
-      ctx.events.endGame(); //Return something and have it available in 'ctx.gameover'.
+      ctx.events.endGame(); // You can return something here and have it available in 'ctx.gameover'
       console.log("The game has concluded with the following result:");
       console.log("Player_0 finished the game with " + p0points + " points.");
       console.log("Player_1 finished the game with " + p1points + " points.");
@@ -107,14 +107,14 @@ function evaluate(G) {
 
   if (p0.suit === p1.suit) {
     if (p0.strength > p1.strength) {
-      // Scenario 1: Both cards are the same suit. Player 0 wins the trick because his card has higher strength.
+      // Scenario 1: Both cards are of the same suit. Player 0 wins the trick because his card has higher strength
       p0picked.push(p0);
       p0picked.push(p1);
       G.winner = 0;
       G.loser = 1;
       G.evaluated = true;
     } else {
-      // Scenario 1: Both cards are the same suit. We compare strengths of the cards to determine a winner of the trick
+      // Scenario 1: Both cards are of the same suit. We compare strengths of the cards to determine a winner of the trick
       // Player 1 wins the trick because his card is stronger
       p1picked.push(p0);
       p1picked.push(p1);
@@ -149,7 +149,7 @@ function evaluate(G) {
 }
 
 function cleanup(G) {
-  // Middle of the board is cleared and both cards are moved to the winner's pocket.
+  // The middle of the board is cleared and both cards are moved to the winner's pocket.
   G.player_0.played = null;
   G.player_1.played = null;
   G.middle = [];

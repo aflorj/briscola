@@ -1,13 +1,14 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { SocketIO } from "boardgame.io/multiplayer";
-import { Client } from "boardgame.io/react";
-import "./styles/lobby.css";
-import { LobbyAPI } from "./api.js";
-import { Briscola } from "./GameLogic.js";
-import Board from "./Board.js";
-import TemplatePage from "./templatePage.js";
-import { WEB_SERVER_URL, GAME_SERVER_URL, APP_PRODUCTION } from "./config.js";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { SocketIO } from 'boardgame.io/multiplayer';
+import { Client } from 'boardgame.io/react';
+import './styles/lobby.css';
+import { LobbyAPI } from './api.js';
+import { Briscola } from './gameLogic.js';
+import Board from './Board.js';
+import TemplatePage from './TemplatePage.js';
+import { WEB_SERVER_URL, GAME_SERVER_URL, APP_PRODUCTION } from './config.js';
+import { Trans } from 'react-i18next';
 
 const api = new LobbyAPI();
 const server = APP_PRODUCTION
@@ -49,7 +50,7 @@ class Lobby extends Component {
     if (this.state.id) {
       api.joinRoom(this.state.id, username, player_no).then(
         (authToken) => {
-          console.log("Joined room as player ", player_no);
+          console.log("Joined the room. Your id is: ", player_no);
           this.setState({ myID: player_no, userAuthToken: authToken });
         },
         (error) => {
@@ -59,7 +60,7 @@ class Lobby extends Component {
     }
   };
   checkRoomStateAndJoin = () => {
-    console.log("Pinging room endpoint to see who's there.");
+    console.log("Checking room state.");
     if (this.state.id) {
       api.whosInRoom(this.state.id).then(
         (players) => {
@@ -71,7 +72,7 @@ class Lobby extends Component {
           this.joinRoom(myPlayerNum);
         },
         (error) => {
-          console.log("Room does not exist");
+          console.log("Room does not exist.");
           this.setState({
             id: null,
           });
@@ -89,7 +90,7 @@ class Lobby extends Component {
           });
         },
         (error) => {
-          console.log("Room does not exist");
+          console.log("Room does not exist.");
           this.setState({
             id: null,
           });
@@ -103,7 +104,7 @@ class Lobby extends Component {
         return (
           <div>
             <div className="player-item">
-              You [connected]
+              <Trans>You [connected]</Trans>
               <div className="player-ready"></div>
             </div>
           </div>
@@ -145,7 +146,7 @@ class Lobby extends Component {
       function () {
         this.setState({ copied: false });
       }.bind(this),
-      600
+      1000
     );
   };
   gameExistsView = () => {
@@ -156,7 +157,7 @@ class Lobby extends Component {
     return (
       <>
         <div className="game-link">
-          You can invite your friend by sharing the link or game code below:
+          <Trans>Invite a player by sharing the link or the game code</Trans>
           <br />
           <div
             className="game-link-box"
@@ -164,21 +165,17 @@ class Lobby extends Component {
           >
             {`${server}/lobby/${this.state.id}`}
           </div>
-          <div className="game-link-button" onClick={this.copyToClipboard}>
-            {this.state.copied ? "copied️!" : " copy "}
+          <div className="menu-button small" onClick={this.copyToClipboard}>
+            {this.state.copied ? "Copied️!" : " Copy "}
           </div>
         </div>
-        {this.state.joined.length} out of the 2 required players are in the
-        lobby with game code<div className="game-code">{this.state.id}</div>:
+        {this.state.joined.length} <Trans>Out of the 2 required players are in the lobby</Trans>
+        <div className="game-code">{this.state.id}</div>:
         <div className="player-list">
           {players.map((p) => {
             const joinedPlayer = this.state.joined[p];
             return this.getPlayerItem(joinedPlayer);
           })}
-        </div>
-        <div>
-          <br />
-          Game will begin as soon as two players are in this lobby!
         </div>
       </>
     );
@@ -187,9 +184,9 @@ class Lobby extends Component {
     return (
       <>
         <div>
-          404. Lobby with this game code not found.
+          <Trans>Error 404. Lobby with this game code not found.</Trans>
           <br />
-          <Link to="/">Go back and create a new lobby.</Link>
+          <Link to="/"><Trans>Go back and create a new lobby.</Trans></Link>
         </div>
       </>
     );

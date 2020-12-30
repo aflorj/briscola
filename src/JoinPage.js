@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import TemplatePage from "./templatePage.js";
-import "./styles/joinPage.css";
+import React, { Component } from 'react';
+import TemplatePage from './TemplatePage.js';
+import './styles/joinPage.css';
+import { withTranslation } from 'react-i18next';
 
-class JoinPage extends Component {
+class JoinPageBeforeTranslation extends Component {
   state = { id: "" };
   handleSubmit = () => {
-    //Route to page
     const history = this.props.history;
     history.push("/lobby/" + this.state.id);
   };
@@ -14,7 +14,10 @@ class JoinPage extends Component {
       id: event.target.value,
     });
   };
+
+ 
   render() {
+    const { t } = this.props;
     return (
       <TemplatePage
         content={
@@ -24,17 +27,17 @@ class JoinPage extends Component {
                 type="text"
                 spellCheck="false"
                 className="game-code-window"
-                placeholder="Enter the game code here"
+                placeholder={t("Placeholder")}
                 value={this.state.id}
                 onChange={this.handleChange}
               />
               <br />
-              <button
-                id="join-game-button"
-                className="menu-button"
+              <div
+                className="menu-button small"
+                onClick={this.handleSubmit}
               >
-              <p>Join</p>
-              </button>
+              <span>{t("Join")}</span>
+              </div>
             </form>
           </>
         }
@@ -42,5 +45,7 @@ class JoinPage extends Component {
     );
   }
 }
+
+const JoinPage = withTranslation()(JoinPageBeforeTranslation)
 
 export default JoinPage;

@@ -1,8 +1,58 @@
 #menu-button-wrapper {
-    padding-top: 50px;
+  padding-top: 50px;
+  text-align: center;
+  font-size: 25px;
 }
 
-p {
-    font-size: 35px;
-    margin: 10px;
+.menu-button {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  color: white;
+  width: 256px;
+  height: 64px;
+  line-height: 64px;
+  transition: all 0.3s;
+  cursor: pointer;
+  margin: 20px;
+  filter: drop-shadow(20px 30px 4px rgb(0, 0, 0, 0.5));
+}
+
+.menu-button::before,
+.menu-button::after {
+  content: "";
+  position: absolute;
+  transition: all 0.3s;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.menu-button::before {
+  left: 4px;
+  z-index: 1;
+  opacity: 0;
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(0.1, 1);
+}
+
+.menu-button:hover {
+  color: white;
+}
+
+.menu-button:hover::before {
+  opacity: 1;
+  transform: scale(1, 1);
+}
+
+.menu-button::after {
+  transition: all 0.3s;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.menu-button:hover::after {
+  transform: scale(1, 0.1);
+  opacity: 0;
 }

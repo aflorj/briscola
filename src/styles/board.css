@@ -1,8 +1,4 @@
 .board {
-  display: grid;
-}
-
-.board {
   display: inline-grid;
   grid-template-columns: [left-edge] 2fr [line2] 1fr [line3] 1fr [right-edge];
   grid-template-rows: [top-edge] 1fr [line2] 1fr [line3] 1fr [bottom-edge];
@@ -13,6 +9,7 @@
   justify-items: center;
   height: 100%;
   width: 100%;
+  overflow: hidden;
 }
 
 .villain-hand {
@@ -23,18 +20,22 @@
 
 .battleground {
   grid-area: battleground;
-  margin-left: 300px;
+  justify-self: left;
+  margin-left: 52%;
 }
 
-/* improve ? */
+/* Show nothing but the live card if it's played before the
+  cards from the previous trick dissapear from the table */
+
 .battleground > img {
   display: none;
 }
 
-.battleground > img:last-child, .battleground > img:nth-last-child(2){
+.battleground > .liveCards:last-child,
+.battleground > .prevCards,
+.battleground > .blank {
   display: inline;
 }
-/**/
 
 .community-cards {
   grid-area: community-cards;
@@ -42,16 +43,78 @@
   position: relative;
 }
 
+/* turn indicator */
+
+@keyframes indicator-hero-turn {
+  0% {
+    filter: grayscale(1);
+  }
+  100% {
+    filter: grayscale(0);
+  }
+}
+
+@keyframes indicator-villain-turn {
+  0% {
+    filter: grayscale(0);
+  }
+  100% {
+    filter: grayscale(1);
+  }
+}
+
+/* trick winner animation */
+
+@keyframes hero-won {
+  0% {filter: drop-shadow(6px -4px 1px rgb(0, 0, 0, 0.8))}
+  100% {filter: drop-shadow(0 0 12px rgb(0,255,0))}
+}
+
+@keyframes villain-won {
+  0% {filter: drop-shadow(6px -4px 1px rgb(0, 0, 0, 0.8))}
+  100% {filter: drop-shadow(0 0 12px rgb(220,20,60))}
+}
+
+.hero-won {
+  animation-name: hero-won;
+  animation-delay: 1s;
+  animation-duration: 1.5s;
+}
+
+.villain-won {
+  animation-name: villain-won;
+  animation-delay: 1s;
+  animation-duration: 1.5s;
+}
+
 .hero-hand {
   grid-area: hero-hand;
   display: flex;
   font-size: 40px;
+  filter: grayscale(1);
+  animation-name: indicator-villain-turn;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-out;
 }
 
-/* playing cards*/
+.hero-hand-green {
+  grid-area: hero-hand;
+  display: flex;
+  font-size: 40px;
+  animation-name: indicator-hero-turn;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-out;
+}
+
+/* Playing cards*/
 
 .hero-playing-card {
   max-height: 38vh;
+}
+
+/* card-wrapper neccessary for drop-shadow to not cause blurring of the card images */
+
+.card-wrapper {
   filter: drop-shadow(40px -30px 4px rgb(0, 0, 0, 0.4));
 }
 
@@ -62,39 +125,17 @@
 
 .briscola-playing-card {
   max-height: 35vh;
-  filter: drop-shadow(6px -6px 1px rgb(0, 0, 0, 0.8));
+  filter: drop-shadow(4px -4px 1px rgb(0, 0, 0, 0.8));
 }
 
 .middle-playing-card {
   max-height: 35vh;
-  filter: drop-shadow(6px -4px 1px rgb(0, 0, 0, 0.8));
- }
-
-#villain-turn img{
-  position: fixed;
-  top: 15vh;
-  left: 2vh;
-  height: 5vh;
-}
-
-#hero-turn img {
-  position: fixed;
-  left: 2vh;
-  bottom: 15vh;
-  height: 5vh;
+  filter: drop-shadow(4px -4px 1px rgb(0, 0, 0, 0.8));
+  margin: 0px 5px;
 }
 
 button {
   font-family: "Cairo", Georgia, sans-serif;
-/*   background-color: #ffffff;
-  font-size: 20px;
-  margin: 8px;
-  cursor: pointer;
-  display: inline-block;
-  white-space: normal;
-  outline: none;
-  box-shadow: 0px 4px 4px 0px #616161;
-  border-radius: 8px; */
 }
 
 .villain-hand-button {
@@ -104,36 +145,37 @@ button {
   margin-top: 200px;
 }
 
-/* hero */
-/* 1 ali 3 karte */
+/* Hero */
+/* 1 or 3 cards */
 
-#hero-other-cards div:nth-child(1) {
+#hero-other-cards > div:nth-child(1) > div {
   transform: rotate(-9deg) translateX(25px);
 }
 
-#hero-other-cards div:nth-child(3) {
+#hero-other-cards > div:nth-child(3) > div {
   transform: rotate(9deg) translateX(-25px);
 }
 
-#hero-other-cards div:nth-child(2) {
+#hero-other-cards > div:nth-child(2) > div {
   transform: translateY(-25px);
 }
-#hero-other-cards div:only-of-type {
+
+#hero-other-cards > div:only-of-type > div {
   transform: rotate(0deg);
 }
 
-/* 2 karti */
+/* 2 cards */
 
-#hero-two-cards div:first-child {
+#hero-two-cards > div:first-child > div {
   transform: rotate(-9deg) translateX(12px);
 }
 
-#hero-two-cards div:last-child {
+#hero-two-cards > div:last-child > div {
   transform: rotate(9deg) translateX(-12px);
 }
 
-/* villain */
-/* 1 ali 3 karte */
+/* Villain */
+/* 1 or 3 cards */
 
 #villain-other-cards div:nth-child(1) {
   transform: rotate(-9deg) translateX(25px);
@@ -150,7 +192,7 @@ button {
   transform: rotate(0deg);
 }
 
-/* 2 karti */
+/* 2 cards */
 
 #villain-two-cards div:first-child {
   transform: rotate(-9deg) translateX(12px);
@@ -160,14 +202,72 @@ button {
   transform: rotate(9deg) translateX(-12px);
 }
 
-/* extra card from the deck */
+/* card coming from the deck */
 
-#wrapped-card-3, #villain-wrapped-card-3 {
+#wrapped-card-3,
+#villain-wrapped-card-3 {
   transform: translateX(150px);
 }
 
-.deck-card {/* trenutno nimamo */
+.deck-card {
   position: absolute;
-  top: 120px;
-  left: 0px;
+  top: 13vh;
+  right: -9vh;
+  max-height: 38vh;
+  transform: rotate(90deg);
+  filter: drop-shadow(-6px -8px 1px rgb(0, 0, 0, 0.8));
+}
+
+#ingame-help {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+}
+
+#previous-trick {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  cursor: default;
+}
+
+#previous-trick-tooltip {
+  visibility: hidden;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  background-color: rgba(255, 255, 255, 0.25);
+  color: black;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+.previous-card {
+  max-height: 20vh;
+}
+
+/* Toggle between a visible button and a visible tooltip */
+
+#previous-trick:hover #previous-trick-tooltip {
+  visibility: visible;
+}
+
+#previous-trick:hover {
+  visibility: hidden;
+}
+
+[src=""] {
+  visibility: hidden;
+}
+
+/* making sure the game over message doesn't just pop out of nowhere */
+
+@keyframes gameover-info {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+.ease-in {
+  animation-name: gameover-info;
+  animation-duration: 1s;
 }

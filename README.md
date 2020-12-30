@@ -10,9 +10,9 @@ This application covers the two-player variant of the game. You can [try it out]
 
 More information about the card game and the game rules is available [here](https://en.wikipedia.org/wiki/Briscola) or in the “Help” tab in the main menu of the application.
 
-## Stack
-- ReactJS
-- NodeJS
+## Built with
+- React
+- Node.js
 - [boardgame.io](https://boardgame.io/)
 
 ## Development

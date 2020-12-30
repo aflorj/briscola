@@ -1,8 +1,9 @@
-import React from "react";
-import { useSpring, animated, config } from "react-spring";
+import React from 'react';
+import { useSpring, animated, config } from 'react-spring';
 
 export default function CommunityCards(props) {
   const turn = props.gameData.gameData.ctx.turn;
+  const remainingCards = props.gameData.gameData.G.deckOnBoard.length;
   const fadeIn = useSpring({
     from: { opacity: 0 },
     to: { opacity: 1 },
@@ -21,10 +22,10 @@ export default function CommunityCards(props) {
   const briscola = props.gameData.gameData.G.briscola;
 
   return (
-    <>
+    <div className="community-cards">
       <animated.div
-        className="community-cards"
-        style={turn < 34 ? fadeIn : turn !== 41 ? fadeOut : fadeAway}
+      id="bpc-wrapper"
+        style={turn < 35 ? fadeIn : turn !== 41 ? fadeOut : fadeAway}
       >
         <img
           className="briscola-playing-card"
@@ -33,6 +34,9 @@ export default function CommunityCards(props) {
           key={briscola.alt}
         />
       </animated.div>
-    </>
+      <animated.div id="deck-wrapper" style={turn < 35 ? fadeIn : fadeAway}>
+        <img className="deck-card" src={turn < 35 ? `/images/backside-${remainingCards}.png` : ""} alt="backside" />
+      </animated.div>
+    </div>
   );
 }
