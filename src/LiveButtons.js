@@ -26,6 +26,7 @@ export default function LiveButtons(props) {
             pathname: "/rematch/",
             playAgainPayload: playAgainPayload,
             newPlayerID: villainID,
+            key: props.gameData.matchID,
           }}
         >
           <div className="menu-button">

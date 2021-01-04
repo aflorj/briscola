@@ -34,7 +34,7 @@ function App() {
         render={(props) => <JoinPage {...props} history={history} />}
       />
       <Route path="/demo" exact render={() => renderBriscolaClient()} />
-      <Route path="/rematch" render={(props) => <RematchLobby {...props} key={Math.random()}/>} />
+      <Route path="/rematch" render={(props) => <RematchLobby {...props} key={props.location.key}/>} />
       <Route path="/lobby/:id" component={Lobby} />
       <Route
         path="*"
