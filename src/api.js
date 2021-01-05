@@ -10,9 +10,10 @@ export class LobbyAPI {
       prefixUrl: `${server}/games/${GAME_NAME}`,
     });
   }
-  async createRoom(numPlayers) {
+  async createRoom(numPlayers, unlisted) {
+    const payload = { numPlayers: numPlayers, unlisted: unlisted }
     const data = await this.api
-      .post("create", { numPlayers: numPlayers })
+      .post("create", { json: payload })
       .json();
     return data.matchID;
   }
@@ -43,5 +44,9 @@ export class LobbyAPI {
     .json();
     const {nextMatchID} = data;
     return nextMatchID;
+  }
+  async listAllPublicGames() {
+    const data = await this.api.get("").json();
+    return data;
   }
 }

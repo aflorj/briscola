@@ -34,8 +34,15 @@ function App() {
         render={(props) => <JoinPage {...props} history={history} />}
       />
       <Route path="/demo" exact render={() => renderBriscolaClient()} />
-      <Route path="/rematch" render={(props) => <RematchLobby {...props} key={props.location.key}/>} />
+      <Route
+        path="/rematch"
+        render={(props) => <RematchLobby {...props} key={props.location.key} />}
+      />
       <Route path="/lobby/:id" component={Lobby} />
+      <Route
+        path="/public_lobby/:id"
+        render={(props) => <Lobby {...props} isPublic={true} />}
+      />
       <Route
         path="*"
         render={(props) => <HomePage {...props} history={history} />}

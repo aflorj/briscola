@@ -22,3 +22,7 @@ More information about the card game and the game rules is available [here](http
 - Set `APP_PRODUCTION=false` in `src/config.js`
 - `$ npm start` to run the server
 - `$ npm run client` to run the front-end
+
+## Credits
+
+The logo was designed by Tina Rebula.

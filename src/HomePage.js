@@ -10,6 +10,7 @@ class HomePage extends Component {
     loading: false,
     redirect: null,
   };
+
   createGame = () => {
     console.log("createGame");
     if (this.state.loading) {
@@ -19,7 +20,7 @@ class HomePage extends Component {
         loading: true,
       });
     }
-    api.createRoom(2).then(
+    api.createRoom(2, true).then(
       (roomID) => {
         const history = this.props.history;
         console.log("Created room with roomID = ", roomID);
@@ -32,6 +33,39 @@ class HomePage extends Component {
       }
     );
   };
+
+  joinQueue = () => {
+    const history = this.props.history;
+    console.log("Joining the public queue.");
+    api.listAllPublicGames().then(
+      (data) => {
+        const publicMatches = data.matches;
+        const availablePublicMatches = [];
+        for (let match of publicMatches) {
+          if (match.players[1].name === undefined) {
+            availablePublicMatches.push(match);
+          }
+        }
+        if (availablePublicMatches.length === 0) {
+          api.createRoom(2, false).then((matchID) => {
+            console.log(
+              `No players waiting in the queue. Created a public lobby (id: ${matchID}).`
+            );
+            history.push("/public_lobby/" + matchID);
+          });
+        } else {
+          console.log(
+            `A player is waiting for an opponent. Joining his public lobby (id: ${availablePublicMatches[0].matchID}).`
+          );
+          history.push("/public_lobby/" + availablePublicMatches[0].matchID);
+        }
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  };
+
   render() {
     const history = this.props.history;
     return (
@@ -43,7 +77,18 @@ class HomePage extends Component {
               id="new-game"
               onClick={() => this.createGame()}
             >
-              <span><Trans>Create game</Trans></span>
+              <span>
+                <Trans>Private lobby</Trans>
+              </span>
+            </div>
+            <div
+              className="menu-button"
+              id="list-games"
+              onClick={() => this.joinQueue()}
+            >
+              <span>
+                <Trans>Public lobby</Trans>
+              </span>
             </div>
             <div
               className="menu-button"
@@ -52,7 +97,9 @@ class HomePage extends Component {
                 history.push("/join");
               }}
             >
-              <span><Trans>Join game</Trans></span>
+              <span>
+                <Trans>Join lobby</Trans>
+              </span>
             </div>
           </div>
         }

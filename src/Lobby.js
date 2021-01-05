@@ -157,8 +157,11 @@ class Lobby extends Component {
     return (
       <>
         <div className="game-link">
-          <Trans>Invite a player by sharing the link or the game code</Trans>
-          <br />
+        <Trans>{(this.props.isPublic) ?
+          "Public lobby text" :
+          "Private lobby text"
+          }</Trans>
+          <br/>
           <div
             className="game-link-box"
             ref={(gameLinkBox) => (this.gameLinkBox = gameLinkBox)}
@@ -169,7 +172,7 @@ class Lobby extends Component {
             {this.state.copied ? "Copied️!" : " Copy "}
           </div>
         </div>
-        {this.state.joined.length} <Trans>Out of the 2 required players are in the lobby</Trans>
+        {this.state.joined.length} <Trans>Out of the 2 required players are in the {(this.props.isPublic) ? 'public' : 'private'} lobby</Trans>
         <div className="game-code">{this.state.id}</div>:
         <div className="player-list">
           {players.map((p) => {
