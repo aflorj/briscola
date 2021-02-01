@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Trans } from "react-i18next";
+import React, { useState, useEffect } from 'react';
+import { Trans } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 export default function DemoButtons(props) {
@@ -9,13 +9,13 @@ export default function DemoButtons(props) {
     setTimeout(() => {
         setIsHidden(false)
     }, props.delay)
-});
+  });
 
   return isHidden ? '' : (
-    <div className="villain-hand-button ease-in">
+    <div className="hero-hand ease-in">
       <div id="menu-button-wrapper">
         <div
-          className="menu-button"
+          className="menu-button game-over"
           onClick={() => {
             window.location.reload();
           }}
@@ -23,7 +23,7 @@ export default function DemoButtons(props) {
           <Trans>Another demo</Trans>
         </div>
         <Link to="/">
-          <div className="menu-button">
+          <div className="menu-button game-over">
             <span>
               <Trans>Back to menu</Trans>
             </span>

@@ -17,9 +17,9 @@ export default function LiveButtons(props) {
           setIsHidden(false)
       }, props.delay)
   });
-
+// 22 blo villain-hand-button
   return isHidden ? '' : (
-    <div className="villain-hand-button ease-in">
+    <div className="hero-hand ease-in">
       <div id="menu-button-wrapper">
         <Link
           to={{
@@ -29,12 +29,12 @@ export default function LiveButtons(props) {
             key: props.gameData.matchID,
           }}
         >
-          <div className="menu-button">
+          <div className="menu-button game-over">
             <Trans>Rematch</Trans>
           </div>
         </Link>
         <Link to="/">
-          <div className="menu-button">
+          <div className="menu-button game-over">
             <span>
               <Trans>Leave</Trans>
             </span>

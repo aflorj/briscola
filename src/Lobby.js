@@ -51,6 +51,7 @@ class Lobby extends Component {
       api.joinRoom(this.state.id, username, player_no).then(
         (authToken) => {
           console.log("Joined the room. Your id is: ", player_no);
+          console.log(this.state);
           this.setState({ myID: player_no, userAuthToken: authToken });
         },
         (error) => {

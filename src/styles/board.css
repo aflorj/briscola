@@ -138,11 +138,12 @@ button {
   font-family: "Cairo", Georgia, sans-serif;
 }
 
-.villain-hand-button {
+.villain-hand-game-over {
   max-height: 200px;
   grid-area: villain-hand;
   display: flex;
   margin-top: 200px;
+  font-size: 34px;
 }
 
 /* Hero */
@@ -243,7 +244,8 @@ button {
 }
 
 .previous-card {
-  max-height: 20vh;
+  max-height: 30vh;
+  margin: 5px;
 }
 
 /* Toggle between a visible button and a visible tooltip */
@@ -270,4 +272,72 @@ button {
 .ease-in {
   animation-name: gameover-info;
   animation-duration: 1s;
+}
+
+#chat {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  bottom: 20px;
+  left: 20px;
+  width: 25%;
+  height: 35%;
+}
+
+#chat-bottom {
+  margin-top: auto;
+  display: flex;
+  min-height: 35px;
+}
+
+#chat-top {
+  position: fixed;
+  bottom: 60px;
+  left: 25px;
+  width: 25%;
+}
+
+#enter-message {
+  width: 85%;
+  outline: none;
+  background: rgba(0, 0, 0, 0);
+  color: white;
+  padding-left: 10px;
+}
+
+#enter-message::placeholder {
+  color: #e0ffff;
+}
+
+#enter-message:focus::placeholder {
+  color: transparent;
+}
+
+.message-wrapper {
+  display: flex;
+}
+
+.sender, .message-content {
+  margin: 0;
+}
+
+.sender {
+  font-weight: 900;
+}
+
+.message-content {
+  padding-left: 5px;
+  font-weight: 500;
+}
+
+.hero-message {
+  color: #e0ffff;
+}
+
+.villain-message {
+  color: #ffdead;
+}
+
+.game-over {
+  margin-bottom: 100px;
 }

@@ -3,7 +3,7 @@ import TemplatePage from './TemplatePage.js';
 import './styles/joinPage.css';
 import { withTranslation } from 'react-i18next';
 
-class JoinPageBeforeTranslation extends Component {
+class JoinPage extends Component {
   state = { id: "" };
   handleSubmit = () => {
     const history = this.props.history;
@@ -27,6 +27,8 @@ class JoinPageBeforeTranslation extends Component {
                 type="text"
                 spellCheck="false"
                 className="game-code-window"
+                autoComplete="off"
+                maxLength="11"
                 placeholder={t("Placeholder")}
                 value={this.state.id}
                 onChange={this.handleChange}
@@ -46,6 +48,4 @@ class JoinPageBeforeTranslation extends Component {
   }
 }
 
-const JoinPage = withTranslation()(JoinPageBeforeTranslation)
-
-export default JoinPage;
+export default withTranslation()(JoinPage);

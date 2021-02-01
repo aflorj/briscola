@@ -12,8 +12,6 @@ export default function PreviousTrick(props) {
   if (turn > 2 && turn < 41) {
     const bounty = firstCard.points + secondCard.points;
     const trickWinner = props.gameData.G.winner;
-    const firstCardAlt = t(firstCard.alt);
-    const secondCardAlt = t(secondCard.alt);
 
     function buildTrickWinnerMessage() {
       let message = '';
@@ -40,14 +38,12 @@ export default function PreviousTrick(props) {
         {t("Previous trick")}
         <div id="previous-trick-tooltip">
           <p>{t("Previous trick info", { previousTrickNum })}</p> 
-          <p>{t("Leading card", { firstCardAlt })}</p>
           <img
             className="previous-card"
             src={firstCard.imagePath}
             alt={firstCard.alt}
             key={firstCard.alt}
           />
-          <p>{t("Following card", { secondCardAlt })}</p>
           <img
             className="previous-card"
             src={secondCard.imagePath}

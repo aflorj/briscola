@@ -1,15 +1,39 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTransition, animated } from 'react-spring';
-import DemoButtons from './DemoButtons.js';
-import LiveButtons from './LiveButtons.js';
+import { useTranslation } from 'react-i18next';
 
 export default function Villain(props) {
-  const isDemo = props.demo;
+  const { t } = useTranslation();
+  const [isHidden, setIsHidden] = useState(true);
   const backside = "/images/backside.png";
   const hero = props.handID;
   const turn = props.gameData.ctx.turn;
   const p0cards = props.gameData.G.player_0.cards;
   const p1cards = props.gameData.G.player_1.cards;
+
+  useEffect(() => {
+    if (turn === 41) {
+      setTimeout(() => {
+        setIsHidden(false);
+      }, 3000);
+    }
+  }, [turn]);
+
+  const playerBounty = props.gameData.G["player_" + (props.handID || "0")].picked;
+  let playerPoints = 0;
+  playerBounty.forEach((card) => {
+    playerPoints += card.points;
+  });
+
+  function determineOutcome() {
+    if (playerPoints < 60) {
+      return t("Lost", { playerPoints });
+    } else if (playerPoints === 60) {
+      return t("Drew", { playerPoints });
+    } else {
+      return t("Won", { playerPoints });
+    }
+  }
 
   const villainCardsToRender = !parseFloat(hero) ? p1cards : p0cards;
   const villainTransitions = useTransition(
@@ -52,14 +76,10 @@ export default function Villain(props) {
       </>
     );
   } else {
-    if (isDemo) {
-      return (
-        <DemoButtons delay={3000}/>
-      );
-    } else {
-      return (
-        <LiveButtons delay={3000} gameData={props.gameData} handID={hero}/>
-      );
-    }
+    return isHidden ? (
+      ""
+    ) : (
+      <div className="villain-hand-game-over ease-in">{determineOutcome()}</div>
+    );
   }
 }
