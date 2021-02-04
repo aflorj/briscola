@@ -2,22 +2,25 @@ import React, { useState, useEffect } from "react";
 import { Trans } from "react-i18next";
 import { Link } from "react-router-dom";
 
-export default function LiveButtons(props) {
+export default function LiveButtons({ delay, handID, gameData }) {
   const [isHidden, setIsHidden] = useState(true);
-  const hero = props.handID;
+  const hero = handID;
   const villainID = !parseFloat(hero) ? 1 : 0;
   const playAgainPayload = [
-    props.gameData.matchID,
-    props.gameData.playerID,
-    props.gameData.credentials,
+    gameData.matchID,
+    handID,
+    gameData.credentials,
   ];
+
+  console.log('to je gameData: ');
+  console.log(gameData);
 
   useEffect(() => {
       setTimeout(() => {
           setIsHidden(false)
-      }, props.delay)
+      }, delay)
   });
-// 22 blo villain-hand-button
+
   return isHidden ? '' : (
     <div className="hero-hand ease-in">
       <div id="menu-button-wrapper">
@@ -26,15 +29,15 @@ export default function LiveButtons(props) {
             pathname: "/rematch/",
             playAgainPayload: playAgainPayload,
             newPlayerID: villainID,
-            key: props.gameData.matchID,
+            key: gameData.matchID,
           }}
         >
-          <div className="menu-button game-over">
+          <div className="menu-button">
             <Trans>Rematch</Trans>
           </div>
         </Link>
         <Link to="/">
-          <div className="menu-button game-over">
+          <div className="menu-button">
             <span>
               <Trans>Leave</Trans>
             </span>

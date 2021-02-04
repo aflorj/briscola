@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { useTransition, animated } from 'react-spring';
 import { useTranslation } from 'react-i18next';
 
-export default function Villain(props) {
+export default function Villain({ handID, gameData }) {
   const { t } = useTranslation();
   const [isHidden, setIsHidden] = useState(true);
   const backside = "/images/backside.png";
-  const hero = props.handID;
-  const turn = props.gameData.ctx.turn;
-  const p0cards = props.gameData.G.player_0.cards;
-  const p1cards = props.gameData.G.player_1.cards;
+  const hero = handID;
+  const { turn } = gameData.ctx;
+  const p0cards = gameData.G.player_0.cards;
+  const p1cards = gameData.G.player_1.cards;
 
   useEffect(() => {
     if (turn === 41) {
@@ -19,7 +19,7 @@ export default function Villain(props) {
     }
   }, [turn]);
 
-  const playerBounty = props.gameData.G["player_" + (props.handID || "0")].picked;
+  const playerBounty = gameData.G["player_" + (handID || "0")].picked;
   let playerPoints = 0;
   playerBounty.forEach((card) => {
     playerPoints += card.points;

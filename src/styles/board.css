@@ -301,8 +301,9 @@ button {
   width: 85%;
   outline: none;
   background: rgba(0, 0, 0, 0);
-  color: white;
+  color: #e0ffff;
   padding-left: 10px;
+  font-size: 15px;
 }
 
 #enter-message::placeholder {
@@ -336,8 +337,4 @@ button {
 
 .villain-message {
   color: #ffdead;
-}
-
-.game-over {
-  margin-bottom: 100px;
 }

@@ -5,8 +5,8 @@ class Chat extends Component {
   state = { message: "" };
   handleSubmit = (event) => {
     event.preventDefault();
-    // check msg.length to prevent sending empty messages
-    if (this.state.message.length > 0) {
+    // don't send empty messages
+    if (this.state.message) {
       this.props.props.sendChatMessage(this.state.message);
       this.setState({
         message: "",
@@ -26,7 +26,7 @@ class Chat extends Component {
     const lastTenMessages = allMessages.slice(
       Math.max(allMessages.length - 10, 0)
     );
-    const heroID = this.props.props.playerID;
+    const heroID = this.props.handID;
     const { t } = this.props;
 
     return (

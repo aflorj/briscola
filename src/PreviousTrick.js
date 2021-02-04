@@ -1,21 +1,21 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-export default function PreviousTrick(props) {
+export default function PreviousTrick({ gameData, handID }) {
   const { t } = useTranslation();
-  const turn = props.gameData.ctx.turn;
-  const heroID = parseInt(props.handID);
-  const firstCard = props.gameData.G.previousRound[0];
-  const secondCard = props.gameData.G.previousRound[1];
+  const { turn } = gameData.ctx;
+  const heroID = parseInt(handID);
+  const firstCard = gameData.G.previousRound[0];
+  const secondCard = gameData.G.previousRound[1];
   const previousTrickNum = Math.ceil(turn / 2) - 1;
 
   if (turn > 2 && turn < 41) {
     const bounty = firstCard.points + secondCard.points;
-    const trickWinner = props.gameData.G.winner;
+    const { winner } = gameData.G;
 
     function buildTrickWinnerMessage() {
       let message = '';
-      if (heroID === trickWinner) {
+      if (heroID === winner) {
         message += t("You won the trick ")
       } else {
         message += t("Your opponent won the trick ")

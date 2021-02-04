@@ -3,15 +3,15 @@ import { useTransition, animated } from 'react-spring';
 import DemoButtons from './DemoButtons.js';
 import LiveButtons from './LiveButtons.js';
 
-export default function Hero(props) {
-  const isDemo = props.demo;
-  const turn = props.gameData.ctx.turn;
-  const activePlayer = props.gameData.ctx.currentPlayer;
-  const hero = props.handID;
-  const moves = props.gameData.moves;
+export default function Hero({ demo, gameData, handID }) {
+  const isDemo = demo;
+  const { turn } = gameData.ctx;
+  const { currentPlayer } = gameData.ctx;
+  const hero = handID;
+  const { moves } = gameData;
 
   const cardsToRender =
-    props.gameData.G["player_" + (props.handID || "0")].cards;
+    gameData.G["player_" + (handID || "0")].cards;
   const transitions = useTransition(cardsToRender, (item) => item.alt, {
     from: { opacity: 0, transform: "translate3d(100px, 0px, 0)" },
     enter: { opacity: 1, transform: "translate3d(0, 0px, 0)" },
@@ -23,7 +23,7 @@ export default function Hero(props) {
       <>
         <div
           className={
-            activePlayer === hero ? "hero-hand-green" : "hero-hand"
+            currentPlayer === hero ? "hero-hand-green" : "hero-hand"
           }
           id={
             cardsToRender.length === 2 ? "hero-two-cards" : "hero-other-cards"
@@ -59,7 +59,7 @@ export default function Hero(props) {
       );
     } else {
       return (
-        <LiveButtons delay={3000} gameData={props.gameData} handID={hero}/>
+        <LiveButtons delay={3000} gameData={gameData} handID={hero}/>
       );
     }
   }

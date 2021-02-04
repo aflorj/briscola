@@ -4,7 +4,7 @@ import Modal from 'react-modal';
 import { Trans, useTranslation } from 'react-i18next';
 Modal.setAppElement("#root");
 
-export default function HelpModal(props) {
+export default function HelpModal({ modalState, toggleModal }) {
   const suits = [denari, spade, coppe, bastoni];
   const [suitIndex, setSuitIndex] = useState(1);
   const { t } = useTranslation();
@@ -29,8 +29,8 @@ export default function HelpModal(props) {
     <>
       <Modal
         id="help-modal"
-        isOpen={props.modalState}
-        onRequestClose={() => props.toggleModal(false)}
+        isOpen={modalState}
+        onRequestClose={() => toggleModal(false)}
         className="modal-content"
         overlayClassName="modal-overlay"
       >
@@ -94,7 +94,7 @@ export default function HelpModal(props) {
             <Trans>Help_text_9</Trans>
           </p>
         </div>
-        <div id="close-modal" onClick={() => props.toggleModal(false)}>
+        <div id="close-modal" onClick={() => toggleModal(false)}>
           <img src="/images/close.png" alt="close modal" id="close-image"/>
         </div>
       </Modal>

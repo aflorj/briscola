@@ -1,9 +1,11 @@
 import React from 'react';
 import { useSpring, animated, config } from 'react-spring';
 
-export default function CommunityCards(props) {
-  const turn = props.gameData.gameData.ctx.turn;
-  const remainingCards = props.gameData.gameData.G.deckOnBoard.length;
+export default function CommunityCards({ gameData }) {
+  const { turn } = gameData.ctx;
+  const { briscola } = gameData.G;
+  const remainingCards = gameData.G.deckOnBoard.length;
+  
   const fadeIn = useSpring({
     from: { opacity: 0 },
     to: { opacity: 1 },
@@ -19,7 +21,6 @@ export default function CommunityCards(props) {
     to: { opacity: 0 },
     config: config.slow,
   });
-  const briscola = props.gameData.gameData.G.briscola;
 
   return (
     <div className="community-cards">

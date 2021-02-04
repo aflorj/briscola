@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import CommunityCards from './CommunityCards.js';
 import { useTransition, animated } from 'react-spring';
 
-export default function Middle(props) {
-  const { middle, previousRound } = props.gameData.G;
-  const winner = props.gameData.G.winner;
-  const heroID = parseInt(props.handID);
+export default function Middle({ gameData, handID }) {
+  const { middle, previousRound } = gameData.G;
+  const { winner } = gameData.G;
+  const heroID = parseInt(handID);
 
   const renderTargets = {
     liveCards: middle,
@@ -32,7 +32,7 @@ export default function Middle(props) {
 
     return () => clearTimeout(timer);
     // eslint-disable-next-line
-  }, [props.gameData.G.middle]);
+  }, [gameData.G.middle]);
 
   const reactSpringObject = {
     from: { opacity: 0, transform: "translate3d(0, 0px, 0)" },
@@ -62,7 +62,7 @@ export default function Middle(props) {
           );
         })}
       </div>
-      <CommunityCards gameData={props} />
+      <CommunityCards gameData={gameData} />
     </>
   );
 }
