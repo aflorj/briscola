@@ -4,10 +4,10 @@ import './styles/joinPage.css';
 import { withTranslation } from 'react-i18next';
 
 class JoinPage extends Component {
-  state = { id: "" };
+  state = { id: '' };
   handleSubmit = () => {
     const history = this.props.history;
-    history.push("/lobby/" + this.state.id);
+    history.push('/lobby/' + this.state.id);
   };
   handleChange = (event) => {
     this.setState({
@@ -15,7 +15,6 @@ class JoinPage extends Component {
     });
   };
 
- 
   render() {
     const { t } = this.props;
     return (
@@ -29,16 +28,13 @@ class JoinPage extends Component {
                 className="game-code-window"
                 autoComplete="off"
                 maxLength="11"
-                placeholder={t("Placeholder")}
+                placeholder={t('Placeholder')}
                 value={this.state.id}
                 onChange={this.handleChange}
               />
               <br />
-              <div
-                className="menu-button small"
-                onClick={this.handleSubmit}
-              >
-              <span>{t("Join")}</span>
+              <div className="menu-button small" onClick={this.handleSubmit}>
+                <span>{t('Join')}</span>
               </div>
             </form>
           </>

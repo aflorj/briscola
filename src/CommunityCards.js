@@ -5,7 +5,7 @@ export default function CommunityCards({ gameData }) {
   const { turn } = gameData.ctx;
   const { briscola } = gameData.G;
   const remainingCards = gameData.G.deckOnBoard.length;
-  
+
   const fadeIn = useSpring({
     from: { opacity: 0 },
     to: { opacity: 1 },
@@ -25,7 +25,7 @@ export default function CommunityCards({ gameData }) {
   return (
     <div className="community-cards">
       <animated.div
-      id="bpc-wrapper"
+        id="bpc-wrapper"
         style={turn < 35 ? fadeIn : turn !== 41 ? fadeOut : fadeAway}
       >
         <img
@@ -36,7 +36,11 @@ export default function CommunityCards({ gameData }) {
         />
       </animated.div>
       <animated.div id="deck-wrapper" style={turn < 35 ? fadeIn : fadeAway}>
-        <img className="deck-card" src={turn < 35 ? `/images/backside-${remainingCards}.png` : ""} alt="backside" />
+        <img
+          className="deck-card"
+          src={turn < 35 ? `/images/backside-${remainingCards}.png` : ''}
+          alt="backside"
+        />
       </animated.div>
     </div>
   );

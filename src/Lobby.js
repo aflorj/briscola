@@ -26,7 +26,7 @@ class Lobby extends Component {
   state = {};
   constructor(props) {
     super(props);
-    console.log("construct");
+    console.log('construct');
     this.state.id = props.match.params.id;
     this.state.joined = [];
     this.state.myID = null;
@@ -35,22 +35,22 @@ class Lobby extends Component {
   componentDidMount() {
     this.checkRoomStateAndJoin();
     this.interval = setInterval(this.checkRoomState, 1000);
-    window.addEventListener("beforeunload", this.cleanup.bind(this));
+    window.addEventListener('beforeunload', this.cleanup.bind(this));
   }
   cleanup() {
-    console.log("cleaning up");
+    console.log('cleaning up');
     api.leaveRoom(this.state.id, this.state.myID, this.state.userAuthToken);
     clearInterval(this.interval);
   }
   componentWillUnmount() {
-    window.removeEventListener("beforeunload", this.cleanup.bind(this));
+    window.removeEventListener('beforeunload', this.cleanup.bind(this));
   }
   joinRoom = (player_no) => {
-    const username = "Player " + player_no;
+    const username = 'Player ' + player_no;
     if (this.state.id) {
       api.joinRoom(this.state.id, username, player_no).then(
         (authToken) => {
-          console.log("Joined the room. Your id is: ", player_no);
+          console.log('Joined the room. Your id is: ', player_no);
           console.log(this.state);
           this.setState({ myID: player_no, userAuthToken: authToken });
         },
@@ -61,7 +61,7 @@ class Lobby extends Component {
     }
   };
   checkRoomStateAndJoin = () => {
-    console.log("Checking room state.");
+    console.log('Checking room state.');
     if (this.state.id) {
       api.whosInRoom(this.state.id).then(
         (players) => {
@@ -73,7 +73,7 @@ class Lobby extends Component {
           this.joinRoom(myPlayerNum);
         },
         (error) => {
-          console.log("Room does not exist.");
+          console.log('Room does not exist.');
           this.setState({
             id: null,
           });
@@ -91,7 +91,7 @@ class Lobby extends Component {
           });
         },
         (error) => {
-          console.log("Room does not exist.");
+          console.log('Room does not exist.');
           this.setState({
             id: null,
           });
@@ -135,12 +135,12 @@ class Lobby extends Component {
     }
   };
   copyToClipboard = () => {
-    var textField = document.createElement("textarea");
+    var textField = document.createElement('textarea');
     textField.innerText = this.gameLinkBox.innerText;
-    textField.style.opacity = "0";
+    textField.style.opacity = '0';
     document.body.appendChild(textField);
     textField.select();
-    document.execCommand("copy");
+    document.execCommand('copy');
     textField.remove();
     this.setState({ copied: true });
     setTimeout(
@@ -158,11 +158,10 @@ class Lobby extends Component {
     return (
       <>
         <div className="game-link">
-        <Trans>{(this.props.isPublic) ?
-          "Public lobby text" :
-          "Private lobby text"
-          }</Trans>
-          <br/>
+          <Trans>
+            {this.props.isPublic ? 'Public lobby text' : 'Private lobby text'}
+          </Trans>
+          <br />
           <div
             className="game-link-box"
             ref={(gameLinkBox) => (this.gameLinkBox = gameLinkBox)}
@@ -170,10 +169,14 @@ class Lobby extends Component {
             {`${server}/lobby/${this.state.id}`}
           </div>
           <div className="menu-button small" onClick={this.copyToClipboard}>
-            {this.state.copied ? "Copied️!" : " Copy "}
+            {this.state.copied ? 'Copied️!' : ' Copy '}
           </div>
         </div>
-        {this.state.joined.length} <Trans>Out of the 2 required players are in the {(this.props.isPublic) ? 'public' : 'private'} lobby</Trans>
+        {this.state.joined.length}{' '}
+        <Trans>
+          Out of the 2 required players are in the{' '}
+          {this.props.isPublic ? 'public' : 'private'} lobby
+        </Trans>
         <div className="game-code">{this.state.id}</div>:
         <div className="player-list">
           {players.map((p) => {
@@ -190,7 +193,9 @@ class Lobby extends Component {
         <div>
           <Trans>Error 404. Lobby with this game code not found.</Trans>
           <br />
-          <Link to="/"><Trans>Go back and create a new lobby.</Trans></Link>
+          <Link to="/">
+            <Trans>Go back and create a new lobby.</Trans>
+          </Link>
         </div>
       </>
     );

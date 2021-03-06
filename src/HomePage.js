@@ -12,7 +12,7 @@ class HomePage extends Component {
   };
 
   createGame = () => {
-    console.log("createGame");
+    console.log('createGame');
     if (this.state.loading) {
       return;
     } else {
@@ -23,9 +23,9 @@ class HomePage extends Component {
     api.createRoom(2, true).then(
       (roomID) => {
         const history = this.props.history;
-        console.log("Created room with roomID = ", roomID);
+        console.log('Created room with roomID = ', roomID);
         this.setState({ loading: false });
-        history.push("/lobby/" + roomID);
+        history.push('/lobby/' + roomID);
       },
       (err) => {
         console.log(err);
@@ -36,7 +36,7 @@ class HomePage extends Component {
 
   joinQueue = () => {
     const history = this.props.history;
-    console.log("Joining the public queue.");
+    console.log('Joining the public queue.');
     api.listAllPublicGames().then(
       (data) => {
         const publicMatches = data.matches;
@@ -51,13 +51,13 @@ class HomePage extends Component {
             console.log(
               `No players waiting in the queue. Created a public lobby (id: ${matchID}).`
             );
-            history.push("/public_lobby/" + matchID);
+            history.push('/public_lobby/' + matchID);
           });
         } else {
           console.log(
             `A player is waiting for an opponent. Joining his public lobby (id: ${availablePublicMatches[0].matchID}).`
           );
-          history.push("/public_lobby/" + availablePublicMatches[0].matchID);
+          history.push('/public_lobby/' + availablePublicMatches[0].matchID);
         }
       },
       (err) => {
@@ -94,7 +94,7 @@ class HomePage extends Component {
               className="menu-button"
               id="join-game"
               onClick={() => {
-                history.push("/join");
+                history.push('/join');
               }}
             >
               <span>

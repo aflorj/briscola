@@ -20,7 +20,9 @@ export default function Middle({ gameData, handID }) {
     let timer;
     if (middle.length === 0) {
       setCurrentTarget(renderTargets.prevCards);
-      setCurrentTargetKey(winner === heroID ? 'prevCards hero-won' : 'prevCards villain-won');
+      setCurrentTargetKey(
+        winner === heroID ? 'prevCards hero-won' : 'prevCards villain-won'
+      );
       timer = setTimeout(() => {
         setCurrentTarget(renderTargets.blank);
         setCurrentTargetKey('blank');
@@ -35,11 +37,11 @@ export default function Middle({ gameData, handID }) {
   }, [gameData.G.middle]);
 
   const reactSpringObject = {
-    from: { opacity: 0, transform: "translate3d(0, 0px, 0)" },
-    enter: { opacity: 1, transform: "translate3d(0, 0px, 0)" },
-    leave: { opacity: 0, transform: "tranlate3d(-200px, 0px, 0)" },
+    from: { opacity: 0, transform: 'translate3d(0, 0px, 0)' },
+    enter: { opacity: 1, transform: 'translate3d(0, 0px, 0)' },
+    leave: { opacity: 0, transform: 'tranlate3d(-200px, 0px, 0)' },
   };
-  
+
   const transitions = useTransition(
     currentTarget,
     (item) => item.alt,

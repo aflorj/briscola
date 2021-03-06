@@ -21,8 +21,7 @@ i18n
     keySeparator: false,
     interpolation: {
       escapeValue: false,
-    }
+    },
   });
-
 
 export default i18n;

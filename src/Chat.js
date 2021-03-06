@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import { withTranslation } from 'react-i18next';
 
 class Chat extends Component {
-  state = { message: "" };
+  state = { message: '' };
   handleSubmit = (event) => {
     event.preventDefault();
     // don't send empty messages
     if (this.state.message) {
       this.props.props.sendChatMessage(this.state.message);
       this.setState({
-        message: "",
+        message: '',
       });
     }
   };
@@ -35,14 +35,14 @@ class Chat extends Component {
           {lastTenMessages.map((msg, index) => (
             <div
               className={`message-wrapper ${
-                msg.sender === heroID ? "hero-message" : "villain-message"
+                msg.sender === heroID ? 'hero-message' : 'villain-message'
               }`}
-              key={"msg-" + index}
+              key={'msg-' + index}
             >
-              <p className="sender" key={"sender-" + index}>
-                {t(msg.sender === heroID ? "You said" : "Opponent said")}
+              <p className="sender" key={'sender-' + index}>
+                {t(msg.sender === heroID ? 'You said' : 'Opponent said')}
               </p>
-              <p className="message-content" key={"content-" + index}>
+              <p className="message-content" key={'content-' + index}>
                 {msg.payload}
               </p>
             </div>
@@ -55,7 +55,7 @@ class Chat extends Component {
             spellCheck="false"
             id="enter-message"
             autoComplete="off"
-            placeholder={t("Message placeholder")}
+            placeholder={t('Message placeholder')}
             value={this.state.message}
             onChange={this.handleChange}
           />

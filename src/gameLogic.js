@@ -1,7 +1,7 @@
 import { deck, shuffleDeck } from './cards.js';
 
 export const Briscola = {
-  name: "Briscola",
+  name: 'Briscola',
 
   setup: prepareGame,
 
@@ -14,7 +14,7 @@ export const Briscola = {
         G.briscola = G.deckOnBoard.pop();
       },
 
-      next: "play",
+      next: 'play',
       start: true,
       endIf: (G) => G.briscola !== null,
     },
@@ -27,7 +27,7 @@ export const Briscola = {
         },
       },
       moves: { playCard },
-      next: "compare",
+      next: 'compare',
       endIf: (G) => G.player_0.played !== null && G.player_1.played !== null,
     },
 
@@ -36,20 +36,19 @@ export const Briscola = {
       onBegin: evaluate,
       endIf: (G) => G.evaluated === true,
       onEnd: cleanup,
-      next: "play",
+      next: 'play',
     },
   },
 
   minPlayers: 2,
   maxPlayers: 2,
-  
+
   endIf: (G, ctx) => {
     let p0bounty = G.player_0.picked;
     let p1bounty = G.player_1.picked;
     let p0points = 0;
     let p1points = 0;
     if (ctx.turn === 41) {
-      
       p0bounty.forEach((card) => {
         p0points += card.points;
       });
@@ -57,9 +56,9 @@ export const Briscola = {
         p1points += card.points;
       });
       ctx.events.endGame(); // You can return something here and have it available in 'ctx.gameover'
-      console.log("The game has concluded with the following result:");
-      console.log("Player_0 finished the game with " + p0points + " points.");
-      console.log("Player_1 finished the game with " + p1points + " points.");
+      console.log('The game has concluded with the following result:');
+      console.log('Player_0 finished the game with ' + p0points + ' points.');
+      console.log('Player_1 finished the game with ' + p1points + ' points.');
     }
   },
 };
@@ -84,12 +83,12 @@ function prepareGame() {
     winner: 0,
     loser: 1,
     middle: [],
-    previousRound: []
+    previousRound: [],
   };
 }
 
 function playCard(G, ctx, cardID) {
-  let playerID = "player_" + ctx.currentPlayer;
+  let playerID = 'player_' + ctx.currentPlayer;
   let currentPlayer = G[playerID];
   currentPlayer.played = currentPlayer.cards.splice(cardID, 1)[0];
   G.middle.push(currentPlayer.played);
@@ -102,8 +101,8 @@ function evaluate(G) {
   let p1 = G.player_1.played;
   let p0picked = G.player_0.picked;
   let p1picked = G.player_1.picked;
-  G.previousRound[0] = G["player_" + G.winner].played;
-  G.previousRound[1] = G["player_" + G.loser].played;
+  G.previousRound[0] = G['player_' + G.winner].played;
+  G.previousRound[1] = G['player_' + G.loser].played;
 
   if (p0.suit === p1.suit) {
     if (p0.strength > p1.strength) {
@@ -141,7 +140,7 @@ function evaluate(G) {
   } else {
     // Scenario 3: No briscola card was played by either player and the played cards are not the same suit
     // Player who played the first card wins the trick
-    let winnerOfLastRound = "player_" + G.winner;
+    let winnerOfLastRound = 'player_' + G.winner;
     G[winnerOfLastRound].picked.push(p0);
     G[winnerOfLastRound].picked.push(p1);
     G.evaluated = true;
@@ -154,8 +153,8 @@ function cleanup(G) {
   G.player_1.played = null;
   G.middle = [];
   G.evaluated = false;
-  let prvoKarto = "player_" + G.winner;
-  let drugoKarto = "player_" + G.loser;
+  let prvoKarto = 'player_' + G.winner;
+  let drugoKarto = 'player_' + G.loser;
   if (G.deckOnBoard.length > 1) {
     G[prvoKarto].cards.push(
       G.deckOnBoard.splice(G.deckOnBoard.length - 1, 1)[0]

@@ -7,11 +7,13 @@ export default function DemoButtons({ delay }) {
 
   useEffect(() => {
     setTimeout(() => {
-        setIsHidden(false)
-    }, delay)
+      setIsHidden(false);
+    }, delay);
   });
 
-  return isHidden ? '' : (
+  return isHidden ? (
+    ''
+  ) : (
     <div className="hero-hand ease-in">
       <div id="menu-button-wrapper">
         <div

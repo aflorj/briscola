@@ -10,30 +10,27 @@ export default function Hero({ demo, gameData, handID }) {
   const hero = handID;
   const { moves } = gameData;
 
-  const cardsToRender =
-    gameData.G["player_" + (handID || "0")].cards;
+  const cardsToRender = gameData.G['player_' + (handID || '0')].cards;
   const transitions = useTransition(cardsToRender, (item) => item.alt, {
-    from: { opacity: 0, transform: "translate3d(100px, 0px, 0)" },
-    enter: { opacity: 1, transform: "translate3d(0, 0px, 0)" },
-    leave: { opacity: 0.5, transform: "tranlate3d(0, -30px, 0)" },
+    from: { opacity: 0, transform: 'translate3d(100px, 0px, 0)' },
+    enter: { opacity: 1, transform: 'translate3d(0, 0px, 0)' },
+    leave: { opacity: 0.5, transform: 'tranlate3d(0, -30px, 0)' },
   });
 
   if (turn < 41) {
     return (
       <>
         <div
-          className={
-            currentPlayer === hero ? "hero-hand-green" : "hero-hand"
-          }
+          className={currentPlayer === hero ? 'hero-hand-green' : 'hero-hand'}
           id={
-            cardsToRender.length === 2 ? "hero-two-cards" : "hero-other-cards"
+            cardsToRender.length === 2 ? 'hero-two-cards' : 'hero-other-cards'
           }
         >
           {transitions.map((x, index) => (
             <div
               className="card-wrapper"
-              id={"wrapped-card-" + index}
-              key={index}
+              id={'wrapped-card-' + index}
+              key={x.item.alt}
             >
               <div className="transform-wrapper">
                 <animated.img
@@ -54,13 +51,9 @@ export default function Hero({ demo, gameData, handID }) {
     );
   } else {
     if (isDemo) {
-      return (
-        <DemoButtons delay={3000}/>
-      );
+      return <DemoButtons delay={3000} />;
     } else {
-      return (
-        <LiveButtons delay={3000} gameData={gameData} handID={hero}/>
-      );
+      return <LiveButtons delay={3000} gameData={gameData} handID={hero} />;
     }
   }
 }
