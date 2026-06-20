@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 export const LanguageSelect = () => {
   const { i18n } = useTranslation();
   const selectedLang = i18n.language;
-  const availableLanguages = ['en', 'si'];
+  const availableLanguages = ['en', 'si', 'it'];
 
   return (
     <div id="lang">
