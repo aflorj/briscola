@@ -3,6 +3,7 @@ import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import langEN from './locales/en/translation.json';
 import langSI from './locales/si/translation.json';
+import langIT from './locales/it/translation.json';
 
 i18n
   .use(initReactI18next)
@@ -14,6 +15,9 @@ i18n
       },
       si: {
         translation: langSI,
+      },
+      it: {
+        translation: langIT,
       },
     },
     fallbackLng: 'en',
